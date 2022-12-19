@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Appointment-project\\DisprzTraining-main\\DisprzTraining\\DisprzTraining.csproj": {}
+    "C:\\Projects\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj": {}
   },
   "projects": {
-    "D:\\Appointment-project\\DisprzTraining-main\\DisprzTraining\\DisprzTraining.csproj": {
+    "C:\\Projects\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Appointment-project\\DisprzTraining-main\\DisprzTraining\\DisprzTraining.csproj",
+        "projectUniqueName": "C:\\Projects\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj",
         "projectName": "DisprzTraining",
-        "projectPath": "D:\\Appointment-project\\DisprzTraining-main\\DisprzTraining\\DisprzTraining.csproj",
+        "projectPath": "C:\\Projects\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj",
         "packagesPath": "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\",
-        "outputPath": "D:\\Appointment-project\\DisprzTraining-main\\DisprzTraining\\obj\\",
+        "outputPath": "C:\\Projects\\DisprzTraining\\DisprzTraining\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jeyasurya.r_disprz\\AppData\\Roaming\\NuGet\\NuGet.Config"

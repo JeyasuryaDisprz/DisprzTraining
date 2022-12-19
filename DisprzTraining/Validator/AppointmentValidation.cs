@@ -21,7 +21,7 @@ namespace DisprzTraining.validation{
             return await Task.FromResult(AppointmentData.Appointments.FindAll( x => x.Date == date ));
         }
 
-        public async Task<Appointment> FindAppointment(int Id){
+        public async Task<Appointment> FindAppointment(Guid Id){
             return await Task.FromResult(AppointmentData.Appointments.Find( x => x.Id == Id));
         }
 

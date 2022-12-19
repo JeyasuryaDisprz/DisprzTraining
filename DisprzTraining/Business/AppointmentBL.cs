@@ -31,11 +31,12 @@ namespace DisprzTraining.Business
             return new List<Appointment>();
         }
 
-        public async Task<bool> DeleteAsync(int Id){
+        public async Task<bool> DeleteAsync(Guid Id){
             var deleteAppointment = new Appointment();
             deleteAppointment = await _appointmentValidation.FindAppointment(Id);
             
-            if(deleteAppointment.Id!=0){
+            if(deleteAppointment.Id != Guid.Empty)
+            {
                 AppointmentData.Appointments.Remove(deleteAppointment);
                 return await Task.FromResult(true);
             }

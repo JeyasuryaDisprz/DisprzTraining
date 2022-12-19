@@ -6,7 +6,7 @@ namespace DisprzTraining.Models
     public class Appointment
     {
         [Required]
-        public int Id{ get; set;}
+        public Guid Id{ get; init;}
         [Required]
         public string? Date{ get; set;}
         [Required]
@@ -14,21 +14,21 @@ namespace DisprzTraining.Models
         [Required]
         public DateTime? EndDateTime{ get; set;}
         [Required]
-        public string? Link{ get; set;}
+        public string? Title{ get; set;}
 
         public Appointment(){
-            this.Id = 0;
+            this.Id = new Guid();
             this.Date = "";
             this.StartDateTime = DateTime.Now;
             this.EndDateTime = DateTime.Now;
-            this.Link = "";
+            this.Title = "";
         }
-        public Appointment(int Id, string Date, DateTime StartDateTime, DateTime EndDateTime, string Link){
+        public Appointment(Guid Id,string Date, DateTime StartDateTime, DateTime EndDateTime, string Title){
             this.Id = Id;
             this.Date = Date;
             this.StartDateTime = StartDateTime;
             this.EndDateTime = EndDateTime;
-            this.Link = Link;
+            this.Title = Title;
         }
     }
 }

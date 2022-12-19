@@ -8,7 +8,7 @@ namespace DisprzTraining.Business
         // Task<HelloWorld> SayHelloWorld();
         public Task<bool> CreateAsync(Appointment appointment);
         public Task<List<Appointment>> GetAsync(string date);
-        public Task<bool> DeleteAsync(int Id);
+        public Task<bool> DeleteAsync(Guid Id);
 
     }
 }

@@ -18,7 +18,7 @@ namespace DisprzTraining.Tests{
         [Fact]
         public async Task CreateAsync_WithAppointment_ReturnTrue(){
             // Arrange
-            var testAppointment = new Appointment(1,"12-12-2022",new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
+            var testAppointment = new Appointment(new Guid(),"12-12-2022",new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
             var MockValidation = new Mock<IAppointmentValidation>();
             MockValidation.Setup(t=>t.ValideDate(testAppointment)).ReturnsAsync(true);
             var sut = new AppointmentBL(MockValidation.Object);
@@ -27,13 +27,13 @@ namespace DisprzTraining.Tests{
             var result = await sut.CreateAsync(testAppointment);
 
             // Assert
-            Assert.Equal(true,result);
+            Assert.True(result);
         }
 
         [Fact]
         public async Task CreateAsync_WithExistingAppointment_ReturnFalse(){
             // Arrange
-            var testAppointment = new Appointment(1,"12-12-2022",new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
+            var testAppointment = new Appointment(new Guid(),"12-12-2022",new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
             var MockValidation = new Mock<IAppointmentValidation>();
             MockValidation.Setup(t=>t.ValideDate(testAppointment)).ReturnsAsync(false);
             var sut = new AppointmentBL(MockValidation.Object);
@@ -42,13 +42,13 @@ namespace DisprzTraining.Tests{
             var result = await sut.CreateAsync(testAppointment);
 
             // Assert
-            Assert.Equal(false,result);
+            Assert.False(result);
         }
 
         [Fact]
         public async Task GetAsync_WithDate_ReturnList(){
             // Arrange
-            var testAppointment = new Appointment(1,"12-12-2022",new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
+            var testAppointment = new Appointment(new Guid(),"12-12-2022",new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
             var testAppointmentList = new List<Appointment>();
             testAppointmentList.Add(testAppointment);
             var MockValidation = new Mock<IAppointmentValidation>();
@@ -66,7 +66,7 @@ namespace DisprzTraining.Tests{
         [Fact]
         public async Task GetAsync_WitUnExistingDate_ReturnEmptyList(){
             // Arrange
-            var testAppointment = new Appointment(1,"12-12-2022",new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
+            var testAppointment = new Appointment(new Guid(),"12-12-2022",new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
             var testAppointmentList = new List<Appointment>();
             testAppointmentList.Add(testAppointment);
             var MockValidation = new Mock<IAppointmentValidation>();
@@ -85,31 +85,31 @@ namespace DisprzTraining.Tests{
         [Fact]
         public async Task DeleteAsync_WithEventDateTime_ReturnTrue(){
             // Arrange
-            var testAppointment = new Appointment(1,"12-12-2022",new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
+            var testAppointment = new Appointment(new Guid(),"12-12-2022",new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
             var MockValidation = new Mock<IAppointmentValidation>();
             MockValidation.Setup(t=>t.FindAppointment(testAppointment.Id)).ReturnsAsync(testAppointment);
             var sut = new AppointmentBL(MockValidation.Object);
 
             // Act
-            var result = await sut.DeleteAsync(1);
+            var result = await sut.DeleteAsync(testAppointment.Id);
             
             // Assert
-            Assert.Equal(true,result);
+            Assert.True(result);
         }
 
         [Fact]
         public async Task DeleteAsync_WithEventDateTime_ReturnFalse(){
             // Arrange
-            var testAppointment = new Appointment(1,"12-12-2022",new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
+            var testAppointment = new Appointment(new Guid(),"12-12-2022",new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
             var MockValidation = new Mock<IAppointmentValidation>();
-            MockValidation.Setup(t=>t.FindAppointment(3)).ReturnsAsync(new Appointment());
+            MockValidation.Setup(t=>t.FindAppointment(testAppointment.Id)).ReturnsAsync(new Appointment());
             var sut = new AppointmentBL(MockValidation.Object);
 
             // Act
-            var result = await sut.DeleteAsync(3);
+            var result = await sut.DeleteAsync(new Guid());
             
             // Assert
-            Assert.Equal(false,result);
+            Assert.False(result);
         }
 
 

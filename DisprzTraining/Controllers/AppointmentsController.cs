@@ -40,7 +40,7 @@ namespace DisprzTraining.Controllers
         [HttpDelete("/api/v1/{Id}")]
         [ProducesResponseType(typeof(Appointment), 200)]
         [ProducesResponseType(typeof(Appointment), 404)]
-        public async Task<IActionResult> Delete(int Id)
+        public async Task<IActionResult> Delete(Guid Id)
         {
             if (await _appointmentBL.DeleteAsync(Id))
             {
