@@ -1,29 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Malcom\\ReportBuilder\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj": {}
+    "D:\\Appointment-project\\DisprzTraining-main\\DisprzTraining\\DisprzTraining.csproj": {}
   },
   "projects": {
-    "D:\\Malcom\\ReportBuilder\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj": {
+    "D:\\Appointment-project\\DisprzTraining-main\\DisprzTraining\\DisprzTraining.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Malcom\\ReportBuilder\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj",
+        "projectUniqueName": "D:\\Appointment-project\\DisprzTraining-main\\DisprzTraining\\DisprzTraining.csproj",
         "projectName": "DisprzTraining",
-        "projectPath": "D:\\Malcom\\ReportBuilder\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj",
-        "packagesPath": "C:\\Users\\Client\\.nuget\\packages\\",
-        "outputPath": "D:\\Malcom\\ReportBuilder\\DisprzTraining\\DisprzTraining\\obj\\",
+        "projectPath": "D:\\Appointment-project\\DisprzTraining-main\\DisprzTraining\\DisprzTraining.csproj",
+        "packagesPath": "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\",
+        "outputPath": "D:\\Appointment-project\\DisprzTraining-main\\DisprzTraining\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Client\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\jeyasurya.r_disprz\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://heuristix.pkgs.visualstudio.com/_packaging/DisprzFeed/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -56,6 +53,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
             }
           },
           "imports": [

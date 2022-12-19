@@ -24,6 +24,22 @@
           "build/netstandard1.0/coverlet.collector.targets": {}
         }
       },
+      "FluentAssertions/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "4.4.0"
+        },
+        "compile": {
+          "lib/net6.0/FluentAssertions.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/FluentAssertions.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Humanizer.Core/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -3686,7 +3702,8 @@
           "Microsoft.AspNetCore.OpenApi": "7.0.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.17.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.0",
-          "Swashbuckle.AspNetCore": "6.4.0"
+          "Swashbuckle.AspNetCore": "6.4.0",
+          "xunit": "2.4.2"
         },
         "compile": {
           "bin/placeholder/DisprzTraining.dll": {}
@@ -3774,6 +3791,36 @@
         "coverlet-icon.png",
         "coverlet.collector.3.1.2.nupkg.sha512",
         "coverlet.collector.nuspec"
+      ]
+    },
+    "FluentAssertions/6.8.0": {
+      "sha512": "NfSlAG97wMxS48Ov+wQEhJITdn4bKrgtKrG4sCPrFBVKozpC57lQ2vzsPdxUOsPbfEgEQTMtvCDECxIlDBfgNA==",
+      "type": "package",
+      "path": "fluentassertions/6.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "FluentAssertions.png",
+        "fluentassertions.6.8.0.nupkg.sha512",
+        "fluentassertions.nuspec",
+        "lib/net47/FluentAssertions.dll",
+        "lib/net47/FluentAssertions.pdb",
+        "lib/net47/FluentAssertions.xml",
+        "lib/net6.0/FluentAssertions.dll",
+        "lib/net6.0/FluentAssertions.pdb",
+        "lib/net6.0/FluentAssertions.xml",
+        "lib/netcoreapp2.1/FluentAssertions.dll",
+        "lib/netcoreapp2.1/FluentAssertions.pdb",
+        "lib/netcoreapp2.1/FluentAssertions.xml",
+        "lib/netcoreapp3.0/FluentAssertions.dll",
+        "lib/netcoreapp3.0/FluentAssertions.pdb",
+        "lib/netcoreapp3.0/FluentAssertions.xml",
+        "lib/netstandard2.0/FluentAssertions.dll",
+        "lib/netstandard2.0/FluentAssertions.pdb",
+        "lib/netstandard2.0/FluentAssertions.xml",
+        "lib/netstandard2.1/FluentAssertions.dll",
+        "lib/netstandard2.1/FluentAssertions.pdb",
+        "lib/netstandard2.1/FluentAssertions.xml"
       ]
     },
     "Humanizer.Core/2.2.0": {
@@ -10890,6 +10937,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "DisprzTraining >= 1.0.0",
+      "FluentAssertions >= 6.8.0",
       "Microsoft.NET.Test.Sdk >= 17.3.2",
       "Moq >= 4.18.3",
       "coverlet.collector >= 3.1.2",
@@ -10898,35 +10946,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Client\\.nuget\\packages\\": {}
+    "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Malcom\\ReportBuilder\\DisprzTraining\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
+      "projectUniqueName": "d:\\Appointment-project\\DisprzTraining-main\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
       "projectName": "DisprzTraining.Tests",
-      "projectPath": "D:\\Malcom\\ReportBuilder\\DisprzTraining\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
-      "packagesPath": "C:\\Users\\Client\\.nuget\\packages\\",
-      "outputPath": "D:\\Malcom\\ReportBuilder\\DisprzTraining\\DisprzTraining.Tests\\obj\\",
+      "projectPath": "d:\\Appointment-project\\DisprzTraining-main\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
+      "packagesPath": "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\",
+      "outputPath": "d:\\Appointment-project\\DisprzTraining-main\\DisprzTraining.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Client\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\jeyasurya.r_disprz\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://heuristix.pkgs.visualstudio.com/_packaging/DisprzFeed/nuget/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\Malcom\\ReportBuilder\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj": {
-              "projectPath": "D:\\Malcom\\ReportBuilder\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj"
+            "d:\\Appointment-project\\DisprzTraining-main\\DisprzTraining\\DisprzTraining.csproj": {
+              "projectPath": "d:\\Appointment-project\\DisprzTraining-main\\DisprzTraining\\DisprzTraining.csproj"
             }
           }
         }
@@ -10941,6 +10986,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "FluentAssertions": {
+            "target": "Package",
+            "version": "[6.8.0, )"
+          },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[17.3.2, )"
