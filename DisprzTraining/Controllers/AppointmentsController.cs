@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DisprzTraining.Business;
 using DisprzTraining.Data;
+using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -18,7 +19,7 @@ namespace DisprzTraining.Controllers
             _appointmentBL = appointmentBL; 
         }
 
-        [HttpGet("/api/v1/{date}")]
+        [HttpGet("/api/v1/appointments/{date}")]
         [ProducesResponseType(typeof(Appointment), 200)]
         public async Task<OkObjectResult> Get(string date)
         {
@@ -26,7 +27,15 @@ namespace DisprzTraining.Controllers
             return Ok(appointmentList);
         }
 
-        [HttpPost("/api/v1")]
+        [HttpGet("/api/v1/appointments/id/{id}")]
+        [ProducesResponseType(typeof(Appointment), 200)]
+        public async Task<OkObjectResult> Get(Guid id)
+        {
+            var appoinment = await _appointmentBL.GetIdAsync(id);
+            return Ok(appoinment);
+        }
+
+        [HttpPost("/api/v1/appointments")]
         [ProducesResponseType(typeof(Appointment), 201)]
         [ProducesResponseType(typeof(Appointment), 409)]
         public async Task<IActionResult> Create(Appointment appointment)
@@ -37,7 +46,7 @@ namespace DisprzTraining.Controllers
             return Conflict(new { message = $"There is an appointment already found."});
         }
 
-        [HttpDelete("/api/v1/{Id}")]
+        [HttpDelete("/api/v1/appointment/{Id}")]
         [ProducesResponseType(typeof(Appointment), 200)]
         [ProducesResponseType(typeof(Appointment), 404)]
         public async Task<IActionResult> Delete(Guid Id)

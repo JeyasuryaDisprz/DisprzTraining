@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DisprzTraining.Models
 {
@@ -7,8 +8,6 @@ namespace DisprzTraining.Models
     {
         [Required]
         public Guid Id{ get; init;}
-        [Required]
-        public string? Date{ get; set;}
         [Required]
         public DateTime? StartDateTime{ get; set;}
         [Required]
@@ -18,14 +17,12 @@ namespace DisprzTraining.Models
 
         public Appointment(){
             this.Id = new Guid();
-            this.Date = "";
             this.StartDateTime = DateTime.Now;
             this.EndDateTime = DateTime.Now;
             this.Title = "";
         }
-        public Appointment(Guid Id,string Date, DateTime StartDateTime, DateTime EndDateTime, string Title){
+        public Appointment(Guid Id, DateTime StartDateTime, DateTime EndDateTime, string Title){
             this.Id = Id;
-            this.Date = Date;
             this.StartDateTime = StartDateTime;
             this.EndDateTime = EndDateTime;
             this.Title = Title;

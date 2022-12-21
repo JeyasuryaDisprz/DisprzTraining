@@ -24,11 +24,17 @@ namespace DisprzTraining.Business
 
         public async Task<List<Appointment>> GetAsync(string? date){
             var appointmentListInDate = await _appointmentValidation.FindAppointments(date);
+            appointmentListInDate = appointmentListInDate.OrderBy(x=>x.StartDateTime).ToList();
             
             if(appointmentListInDate.Count > 0){
                 return appointmentListInDate;
             }
             return new List<Appointment>();
+        }
+        public async Task<Appointment> GetIdAsync(Guid Id)
+        {
+            var appoinment = await _appointmentValidation.FindAppointment(Id);
+            return await Task.FromResult(appoinment);
         }
 
         public async Task<bool> DeleteAsync(Guid Id){

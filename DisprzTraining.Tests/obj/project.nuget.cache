@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kwNzN3wVmnfoBWSWN1zk4nK5vFUHRZ5IeY2mzzol+ChDAiQUu6Imd5gwxncGvQcAevxv1or+8s7c7WnguOJNbg==",
+  "dgSpecHash": "FwHQsb6Jg4Mb8vh7vNsB3wmcQ9UqlK8yTMdcCx9y4whvKd55QxGRiR9nT/kc24s3V5YTXUyLo4B9qwb983w06g==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\DisprzTraining\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
+  "projectFilePath": "c:\\Projects\\DisprzTraining\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
@@ -38,6 +38,7 @@
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.net.compilers\\4.2.0\\microsoft.net.compilers.4.2.0.nupkg.sha512",
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.net.stringtools\\17.3.2\\microsoft.net.stringtools.17.3.2.nupkg.sha512",
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.net.test.sdk\\17.3.2\\microsoft.net.test.sdk.17.3.2.nupkg.sha512",
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",

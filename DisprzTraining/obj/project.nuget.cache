@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ETMAK6F2DcwRiluvxjFwujEWX/8d0V5ibu0tY62694irblHVvdoDkB4BK+VoBy1uzVWlE2jvEN3A3OygrBbrWQ==",
+  "dgSpecHash": "mR9RVXmyDEQgToLuNLVaVKzVZUZP7r1+NzznP8LBKa7j1rvd5VuTIYJyI1pjECDh4rQ9+jr0tvG9HNeAqBPNMw==",
   "success": true,
   "projectFilePath": "C:\\Projects\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,7 @@
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.net.compilers\\4.2.0\\microsoft.net.compilers.4.2.0.nupkg.sha512",
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.net.stringtools\\17.3.2\\microsoft.net.stringtools.17.3.2.nupkg.sha512",
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",
     "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
