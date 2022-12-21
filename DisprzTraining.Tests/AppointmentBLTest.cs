@@ -21,7 +21,7 @@ namespace DisprzTraining.Tests
         public async Task CreateAsync_WithAppointment_ReturnTrue()
         {
             // Arrange
-            var testAppointment = new Appointment(new Guid(), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
+            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
             var testAppointmentList = new List<Appointment>();
             var MockValidation = new Mock<IAppointmentValidation>();
             MockValidation.Setup(t => t.ValideDate(testAppointment)).ReturnsAsync(true);
@@ -38,7 +38,7 @@ namespace DisprzTraining.Tests
         public async Task CreateAsync_WithExistingAppointment_ReturnFalse()
         {
             // Arrange
-            var testAppointment = new Appointment(new Guid(), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
+            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
             var testAppointmentList = new List<Appointment>();
             testAppointmentList.Add(testAppointment);
             var MockValidation = new Mock<IAppointmentValidation>();
@@ -57,7 +57,7 @@ namespace DisprzTraining.Tests
         {
             // Arrange
             var testDate = "2022-12-12";
-            var testAppointment = new Appointment(new Guid(), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
+            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
             var testAppointmentList = new List<Appointment>();
             testAppointmentList.Add(testAppointment);
             var MockValidation = new Mock<IAppointmentValidation>();
@@ -77,7 +77,7 @@ namespace DisprzTraining.Tests
         {
             // Arrange
             var testDate = "2022-12-13";
-            var testAppointment = new Appointment(new Guid(), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
+            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
             var testAppointmentList = new List<Appointment>();
             testAppointmentList.Add(testAppointment);
             var MockValidation = new Mock<IAppointmentValidation>();
@@ -97,7 +97,7 @@ namespace DisprzTraining.Tests
         public async Task GetTaskAsync_WithId_ReturnAppointment()
         {
             // Arrange
-            var testAppointment = new Appointment(new Guid(), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
+            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
             var testAppointmentList = new List<Appointment>();
             testAppointmentList.Add(testAppointment);
             var MockValidation = new Mock<IAppointmentValidation>();
@@ -143,6 +143,27 @@ namespace DisprzTraining.Tests
 
             // Assert
             Assert.False(result);
+        }
+
+        [Fact]
+        public async Task UpdateAsync_WithId_ReturnOk()
+        {
+            // Arrange
+            var updateAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"),new DateTime(2022, 12, 12, 11, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
+            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
+            var testAppointmentList = new List<Appointment>() {testAppointment};
+            var MockValidation = new Mock<IAppointmentValidation>();
+            MockValidation.Setup(t => t.FindAppointment(testAppointment.Id)).ReturnsAsync(testAppointment);
+            var sut = new AppointmentBL(MockValidation.Object);
+
+            // Act
+            var result = await sut.UpdateAsync(updateAppointment);
+
+            // Assert
+            // Assert.Equal(updateAppointment,result.Value);
+            // Assert.Equal(200,result.StatusCode);
+
+
         }
     }
 }

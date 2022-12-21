@@ -60,11 +60,14 @@ namespace DisprzTraining.Tests{
             var sut = new AppointmentsController(MockAppointment.Object);
 
             // Act
-            var result = await sut.Create(testAppointment);
+            var result = await sut.Create(testAppointment) as CreatedResult;
 
             // Assert
-            Assert.IsType<CreatedResult>(result);
+            // Assert.IsType<CreatedResult>(result);
+            Assert.Equal(testAppointment,result.Value);
+            Assert.Equal(201,result.StatusCode);
         }
+
         [Fact]
         public async Task Create_WithExistingAppointment_ConflictResult(){
             // Arrange
@@ -74,12 +77,11 @@ namespace DisprzTraining.Tests{
             var sut = new AppointmentsController(MockAppointment.Object);
 
             // Act
-            var result = await sut.Create(testAppointment);
+            var result = await sut.Create(testAppointment) as ConflictObjectResult;
 
             // Assert
-            Assert.IsType<ConflictObjectResult>(result);
+            Assert.Equal(409,result.StatusCode);
         }
-
 
         [Fact]
         public async Task Delete_WithEventTime_OkResult(){
@@ -90,24 +92,24 @@ namespace DisprzTraining.Tests{
             var sut = new AppointmentsController(MockAppointment.Object);
 
             // Act
-            var result = await sut.Delete(new Guid());
+            var result = await sut.Delete(new Guid()) as OkResult;
 
             // Assert
-            Assert.IsType<OkResult>(result);
+            Assert.Equal(200,result.StatusCode);
         }
         [Fact]
         public async Task Delete_WithUnknownEventTime_NotFound(){
             // Arrange
-            var testAppointment = new Appointment(new Guid(),new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
+            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"),new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
             var MockAppointment = new Mock<IAppointmentBL>();
-            MockAppointment.Setup(t=>t.DeleteAsync(testAppointment.Id)).ReturnsAsync(false);
+            MockAppointment.Setup(t=>t.DeleteAsync(new Guid())).ReturnsAsync(false);
             var sut = new AppointmentsController(MockAppointment.Object);
 
             // Act
-            var result = await sut.Delete(new Guid());
+            var result = await sut.Delete(new Guid()) as NotFoundResult;
 
             // Assert
-            Assert.IsType<NotFoundObjectResult>(result);
+            Assert.Equal(404,result.StatusCode);
         }
     }
 }
