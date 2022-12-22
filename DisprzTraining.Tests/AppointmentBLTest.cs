@@ -157,7 +157,7 @@ namespace DisprzTraining.Tests
             var sut = new AppointmentBL(MockValidation.Object);
 
             // Act
-            var result = await sut.UpdateAsync(updateAppointment);
+            var result = await sut.UpdateAsync(testAppointment.Id, updateAppointment);
 
             // Assert
             // Assert.Equal(updateAppointment,result.Value);

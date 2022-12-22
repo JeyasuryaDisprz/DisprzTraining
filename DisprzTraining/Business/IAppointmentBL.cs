@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using DisprzTraining.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DisprzTraining.Business
 {
@@ -10,7 +11,7 @@ namespace DisprzTraining.Business
         public Task<List<Appointment>> GetAsync(string date);
         public Task<Appointment> GetIdAsync(Guid Id);
         public Task<bool> DeleteAsync(Guid Id);
-        public Task<bool> UpdateAsync(Appointment appointment);
+        public Task<ActionResult> UpdateAsync(Guid Id,Appointment appointment);
 
     }
 }

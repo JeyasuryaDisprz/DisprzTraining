@@ -5,6 +5,8 @@ using DisprzTraining.Data;
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using DisprzTraining.Extensions;
+using DisprzTraining.Dto;
 
 namespace DisprzTraining.Controllers
 {
@@ -20,38 +22,49 @@ namespace DisprzTraining.Controllers
         }
 
         [HttpGet("/api/v1/appointments/{date}")]
-        [ProducesResponseType(typeof(Appointment), 200)]
+        [ProducesResponseType(typeof(AppointmentDto), 200)]
         public async Task<OkObjectResult> Get(string date)
         {
             var appointmentList = await _appointmentBL.GetAsync(date);
+            appointmentList.Select(appointment=>appointment.AsDto());
             return Ok(appointmentList);
         }
 
         [HttpGet("/api/v1/appointments/id/{id}")]
-        [ProducesResponseType(typeof(Appointment), 200)]
-        public async Task<OkObjectResult> Get(Guid id)
+        [ProducesResponseType(typeof(AppointmentDto), 200)]
+        public async Task<OkObjectResult> GetById(Guid id)
         {
-            var appoinment = await _appointmentBL.GetIdAsync(id);
-            return Ok(appoinment);
+            var appointment = await _appointmentBL.GetIdAsync(id);
+            var appointmentDto = appointment.AsDto();
+            return Ok(appointmentDto);
         }
 
         [HttpPost("/api/v1/appointments")]
-        [ProducesResponseType(typeof(Appointment), 201)]
-        [ProducesResponseType(typeof(Appointment), 409)]
-        public async Task<IActionResult> Create(Appointment appointment)
+        [ProducesResponseType(typeof(AppointmentDto), 201)]
+        [ProducesResponseType(typeof(AppointmentDto), 409)]
+        public async Task<ActionResult> Create(AppointmentDto appointmentDto)
         {
-            if(await _appointmentBL.CreateAsync(appointment)){
-                return Created("Appointment is successfully created",appointment);
+            Appointment appointment = new(){
+                Id = appointmentDto.Id,
+                StartDateTime = appointmentDto.StartDateTime,
+                EndDateTime = appointmentDto.EndDateTime,
+                Title = appointmentDto.Title
+            };
+                 bool conflict =   await _appointmentBL.CreateAsync(appointment);
+            if(conflict){
+                return CreatedAtAction(nameof(GetById), new {Id = appointment.Id}, appointment.AsDto());
             }
-            return Conflict(new { message = $"There is an appointment already found."});
+            else{
+            return Conflict("Meet already found");
+            }
         }
 
-        [HttpDelete("/api/v1/appointment/{Id}")]
-        [ProducesResponseType(typeof(Appointment), 200)]
-        [ProducesResponseType(typeof(Appointment), 404)]
-        public async Task<IActionResult> Delete(Guid Id)
+        [HttpDelete("/api/v1/appointments/id/{id}")]
+        [ProducesResponseType(typeof(AppointmentDto), 200)]
+        [ProducesResponseType(typeof(AppointmentDto), 404)]
+        public async Task<IActionResult> Delete(Guid id)
         {
-            if (await _appointmentBL.DeleteAsync(Id))
+            if (await _appointmentBL.DeleteAsync(id))
             {
                 return Ok();
             }

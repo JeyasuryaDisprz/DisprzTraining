@@ -3,6 +3,8 @@ using DisprzTraining.Data;
 using DisprzTraining.validation;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Web;
 
 namespace DisprzTraining.Business
 {
@@ -18,7 +20,8 @@ namespace DisprzTraining.Business
 
         public async Task<bool> CreateAsync(Appointment appointment)
         {
-            if (await _appointmentValidation.ValideDate(appointment))
+            bool result = await _appointmentValidation.ValideDate(appointment);
+            if (result)
             {
                 AppointmentData.Appointments.Add(appointment);
                 return true;
@@ -49,7 +52,7 @@ namespace DisprzTraining.Business
             var deleteAppointment = new Appointment();
             deleteAppointment = await _appointmentValidation.FindAppointment(Id);
 
-            if (deleteAppointment != null)
+            if (deleteAppointment.Title != "")
             {
                 AppointmentData.Appointments.Remove(deleteAppointment);
                 return await Task.FromResult(true);
@@ -57,8 +60,12 @@ namespace DisprzTraining.Business
             return await Task.FromResult(false);
         }
 
-        public async Task<bool> UpdateAsync(Appointment appointment)
+        public async Task<ActionResult> UpdateAsync(Guid Id, Appointment appointment)
         {
+            // var validAppointment = _appointmentValidation.FindAppointment(Id);
+            // if(validAppointment == null){
+            //     throw new 
+            // }
 
             throw new NotImplementedException();
         }
