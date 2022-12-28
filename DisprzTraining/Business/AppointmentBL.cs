@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Web;
+using System.Globalization;
 
 namespace DisprzTraining.Business
 {
@@ -31,6 +32,7 @@ namespace DisprzTraining.Business
 
         public async Task<List<Appointment>> GetAsync(string? date)
         {
+
             var appointmentListInDate = await _appointmentValidation.FindAppointments(date);
             appointmentListInDate = appointmentListInDate.OrderBy(x => x.StartDateTime).ToList();
 
@@ -44,7 +46,8 @@ namespace DisprzTraining.Business
         {
             var appoinment = new Appointment();
             appoinment = await _appointmentValidation.FindAppointment(Id);
-            return await Task.FromResult(appoinment);
+            // return await Task.FromResult(appoinment);
+            return appoinment;
         }
 
         public async Task<bool> DeleteAsync(Guid Id)

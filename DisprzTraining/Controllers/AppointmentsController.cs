@@ -22,21 +22,31 @@ namespace DisprzTraining.Controllers
         }
 
         [HttpGet("/api/v1/appointments/{date}")]
-        [ProducesResponseType(typeof(AppointmentDto), 200)]
-        public async Task<OkObjectResult> Get(string date)
+        [ProducesResponseType(typeof(List<Appointment>), 200)]
+        public async Task<ActionResult> Get(string date)
         {
-            var appointmentList = await _appointmentBL.GetAsync(date);
-            appointmentList.Select(appointment=>appointment.AsDto());
-            return Ok(appointmentList);
+            try{
+                var appointmentList = await _appointmentBL.GetAsync(date);
+                appointmentList.Select(appointment=>appointment.AsDto());
+                return Ok(appointmentList);
+            }
+            catch{
+                return BadRequest("Invalid data");
+            }
         }
 
         [HttpGet("/api/v1/appointments/id/{id}")]
         [ProducesResponseType(typeof(AppointmentDto), 200)]
-        public async Task<OkObjectResult> GetById(Guid id)
+        public async Task<ActionResult> GetById(Guid id)
         {
-            var appointment = await _appointmentBL.GetIdAsync(id);
-            var appointmentDto = appointment.AsDto();
-            return Ok(appointmentDto);
+            try{
+                var appointment = await _appointmentBL.GetIdAsync(id);
+                var appointmentDto = appointment.AsDto();
+                return Ok(appointmentDto);
+            }
+            catch{
+                return NotFound("Meeting not Found");
+            }
         }
 
         [HttpPost("/api/v1/appointments")]
@@ -45,7 +55,7 @@ namespace DisprzTraining.Controllers
         public async Task<ActionResult> Create(AppointmentDto appointmentDto)
         {
             Appointment appointment = new(){
-                Id = appointmentDto.Id,
+                Id = Guid.NewGuid(),
                 StartDateTime = appointmentDto.StartDateTime,
                 EndDateTime = appointmentDto.EndDateTime,
                 Title = appointmentDto.Title
@@ -64,11 +74,16 @@ namespace DisprzTraining.Controllers
         [ProducesResponseType(typeof(AppointmentDto), 404)]
         public async Task<IActionResult> Delete(Guid id)
         {
-            if (await _appointmentBL.DeleteAsync(id))
-            {
-                return Ok();
+            try{
+                if (await _appointmentBL.DeleteAsync(id))
+                {
+                    return Ok();
+                }
             }
-            return NotFound(new { message = $"Error on delete" });
+            catch{
+                return NotFound(new { message = $"Meeting not Found" });
+            }
+            return Ok();
         }
     }
 }

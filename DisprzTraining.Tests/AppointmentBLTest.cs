@@ -145,25 +145,25 @@ namespace DisprzTraining.Tests
             Assert.False(result);
         }
 
-        [Fact]
-        public async Task UpdateAsync_WithId_ReturnOk()
-        {
-            // Arrange
-            var updateAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"),new DateTime(2022, 12, 12, 11, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
-            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
-            var testAppointmentList = new List<Appointment>() {testAppointment};
-            var MockValidation = new Mock<IAppointmentValidation>();
-            MockValidation.Setup(t => t.FindAppointment(testAppointment.Id)).ReturnsAsync(testAppointment);
-            var sut = new AppointmentBL(MockValidation.Object);
+        // [Fact]
+        // public async Task UpdateAsync_WithId_ReturnOk()
+        // {
+        //     // Arrange
+        //     var updateAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"),new DateTime(2022, 12, 12, 11, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
+        //     var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC");
+        //     var testAppointmentList = new List<Appointment>() {testAppointment};
+        //     var MockValidation = new Mock<IAppointmentValidation>();
+        //     MockValidation.Setup(t => t.FindAppointment(testAppointment.Id)).ReturnsAsync(testAppointment);
+        //     var sut = new AppointmentBL(MockValidation.Object);
 
-            // Act
-            var result = await sut.UpdateAsync(testAppointment.Id, updateAppointment);
+        //     // Act
+        //     var result = await sut.UpdateAsync(testAppointment.Id, updateAppointment);
 
-            // Assert
-            // Assert.Equal(updateAppointment,result.Value);
-            // Assert.Equal(200,result.StatusCode);
+        //     // Assert
+        //     // Assert.Equal(updateAppointment,result.Value);
+        //     // Assert.Equal(200,result.StatusCode);
 
 
-        }
+        // }
     }
 }
