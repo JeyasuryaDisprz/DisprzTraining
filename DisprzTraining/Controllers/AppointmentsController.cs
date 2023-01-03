@@ -21,9 +21,38 @@ namespace DisprzTraining.Controllers
             _appointmentBL = appointmentBL; 
         }
 
-        [HttpGet("/api/v1/appointments/{date}")]
+        [HttpPost("/api/v1/appointments")]
+        [ProducesResponseType(typeof(AppointmentDto), 201)]
+        [ProducesResponseType(typeof(AppointmentDto), 400)]
+        [ProducesResponseType(typeof(AppointmentDto), 409)]
+        public async Task<ActionResult> Create(AppointmentDto appointmentDto)
+        {
+            Appointment appointment = new(){
+                Id = Guid.NewGuid(),
+                StartDateTime = appointmentDto.StartDateTime,
+                EndDateTime = appointmentDto.EndDateTime,
+                Title = appointmentDto.Title,
+                Description = appointmentDto.Description
+            };
+            
+            try{
+                bool noConflict =   await _appointmentBL.CreateAsync(appointment);
+                if(noConflict){
+                    return CreatedAtAction(nameof(GetById), new {Id = appointment.Id}, appointmentDto);
+                }
+                else{
+                    return Conflict("Meet already found");
+                }
+            }
+            catch(Exception e){
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("/api/v1/appointments/")]
         [ProducesResponseType(typeof(List<Appointment>), 200)]
-        public async Task<ActionResult> Get(string date)
+        [ProducesResponseType(typeof(List<Appointment>), 400)]
+        public async Task<ActionResult> Get([FromQuery]string date)
         {
             try{
                 var appointmentList = await _appointmentBL.GetAsync(date);
@@ -46,26 +75,6 @@ namespace DisprzTraining.Controllers
             }
             catch{
                 return NotFound("Meeting not Found");
-            }
-        }
-
-        [HttpPost("/api/v1/appointments")]
-        [ProducesResponseType(typeof(AppointmentDto), 201)]
-        [ProducesResponseType(typeof(AppointmentDto), 409)]
-        public async Task<ActionResult> Create(AppointmentDto appointmentDto)
-        {
-            Appointment appointment = new(){
-                Id = Guid.NewGuid(),
-                StartDateTime = appointmentDto.StartDateTime,
-                EndDateTime = appointmentDto.EndDateTime,
-                Title = appointmentDto.Title
-            };
-                 bool conflict =   await _appointmentBL.CreateAsync(appointment);
-            if(conflict){
-                return CreatedAtAction(nameof(GetById), new {Id = appointment.Id}, appointment.AsDto());
-            }
-            else{
-            return Conflict("Meet already found");
             }
         }
 

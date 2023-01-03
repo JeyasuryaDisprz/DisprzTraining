@@ -21,7 +21,7 @@ namespace DisprzTraining.Tests{
         [Fact]
         public async Task Get_WithDate_OkObjectResult(){
             // Arrange
-            var testAppointmentList = new List<Appointment>() {new Appointment(new Guid(),new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC")};
+            var testAppointmentList = new List<Appointment>() {new Appointment(new Guid(),new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC","Test")};
             var MockAppointment = new Mock<IAppointmentBL>();
             MockAppointment.Setup(t=>t.GetAsync("2022-12-12")).ReturnsAsync(testAppointmentList);
             var sut = new AppointmentsController(MockAppointment.Object);
@@ -36,7 +36,7 @@ namespace DisprzTraining.Tests{
         [Fact]
         public async Task Get_WithId_OkObjectResult(){
             // Arrange
-            var testAppointment = new Appointment(new Guid(),new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
+            var testAppointment = new Appointment(new Guid(),new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC","Test");
             var testAppointmentDto = testAppointment.AsDto();
             var testAppointmentList = new List<Appointment>();
             testAppointmentList.Add(testAppointment);
@@ -61,14 +61,6 @@ namespace DisprzTraining.Tests{
                 Title = "ABC"
             };
 
-            var appointment = new Appointment(){
-                Id = new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"),
-                StartDateTime = appointmentDto.StartDateTime,
-                EndDateTime = appointmentDto.EndDateTime,
-                Title = appointmentDto.Title
-            };
-            // var testAppointmentList = new List<Appointment>();
-
             var MockAppointment = new Mock<IAppointmentBL>();
             MockAppointment.Setup(t=>t.CreateAsync(It.IsAny<Appointment>())).ReturnsAsync(true);
         
@@ -92,22 +84,23 @@ namespace DisprzTraining.Tests{
                 EndDateTime = new DateTime(2022,12,12,12,00,00),
                 Title = "ABC"
             };
-            var testAppointment = new Appointment(new Guid(),new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
+            var testAppointment = new Appointment(new Guid(),new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC","Test");
             var MockAppointment = new Mock<IAppointmentBL>();
             MockAppointment.Setup(t=>t.CreateAsync(testAppointment)).ReturnsAsync(false);
             var sut = new AppointmentsController(MockAppointment.Object);
 
             // Act
-            var result = await sut.Create(testAppointmentDto);
+            var result = await sut.Create(testAppointmentDto) as ConflictObjectResult;
 
             // Assert
-            // Assert.Equal(409,result.StatusCode);
+            Assert.True(result?.StatusCode.Equals(409));
+
         }
 
         [Fact]
         public async Task Delete_WithEventTime_OkResult(){
             // Arrange
-            var testAppointment = new Appointment(new Guid(),new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC");
+            var testAppointment = new Appointment(new Guid(),new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC","Test");
             var MockAppointment = new Mock<IAppointmentBL>();
             MockAppointment.Setup(t=>t.DeleteAsync(new Guid())).ReturnsAsync(true);
             var sut = new AppointmentsController(MockAppointment.Object);

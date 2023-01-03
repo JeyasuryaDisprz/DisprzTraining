@@ -8,21 +8,26 @@ namespace DisprzTraining.validation
     public class AppointmentValidation : IAppointmentValidation
     {
 
-        public async Task<bool> ValideDate(Appointment appoinment)
+        public async Task<bool> ValideDate(Appointment appointment)
         {
-            // if (appoinment.StartDateTime < DateTime.Now.Date)
+            // if (appointment.StartDateTime < DateTime.Now.Date)
             // {
             //     return await Task.FromResult(false);
             // }
 
-            var dateString = DateOnly.FromDateTime((DateTime)appoinment.StartDateTime);
+            if ((appointment.StartDateTime >= appointment.EndDateTime))
+            {
+                throw new Exception("Invalid DateInput, EndTime should be greater than StartTime");
+            }
+
+            var dateString = DateOnly.FromDateTime((DateTime)appointment.StartDateTime);
             var stringDate = dateString.ToString("yyyy/MM/dd");
            
             var AppointmentsInDate = await FindAppointments(stringDate);
-            foreach (var appoinmentDB in AppointmentsInDate)
+            foreach (var appointmentDB in AppointmentsInDate)
             {
-                if ((appoinment.StartDateTime >= appoinmentDB.StartDateTime && appoinment.StartDateTime < appoinmentDB.EndDateTime) ||
-                        (appoinment.EndDateTime > appoinmentDB.StartDateTime && appoinment.EndDateTime <= appoinmentDB.EndDateTime))
+                if ((appointment.StartDateTime >= appointmentDB.StartDateTime && appointment.StartDateTime < appointmentDB.EndDateTime) ||
+                        (appointment.EndDateTime > appointmentDB.StartDateTime && appointment.EndDateTime <= appointmentDB.EndDateTime))
                 {
                     return await Task.FromResult(false);
                 }

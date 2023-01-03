@@ -21,11 +21,20 @@ namespace DisprzTraining.Business
 
         public async Task<bool> CreateAsync(Appointment appointment)
         {
-            bool result = await _appointmentValidation.ValideDate(appointment);
-            if (result)
+
+            // DateTime.Today.
+
+            try
             {
-                AppointmentData.Appointments.Add(appointment);
-                return true;
+                bool result = await _appointmentValidation.ValideDate(appointment);
+                if (result)
+                {
+                    AppointmentData.Appointments.Add(appointment);
+                    return true;
+                }
+            }
+            catch(Exception e){
+                throw new Exception(e.Message);
             }
             return false;
         }
@@ -61,16 +70,6 @@ namespace DisprzTraining.Business
                 return await Task.FromResult(true);
             }
             return await Task.FromResult(false);
-        }
-
-        public async Task<ActionResult> UpdateAsync(Guid Id, Appointment appointment)
-        {
-            // var validAppointment = _appointmentValidation.FindAppointment(Id);
-            // if(validAppointment == null){
-            //     throw new 
-            // }
-
-            throw new NotImplementedException();
         }
     }
 }
