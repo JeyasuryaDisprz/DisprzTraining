@@ -13,6 +13,7 @@
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.17.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.0",
           "Swashbuckle.AspNetCore": "6.4.0",
+          "Swashbuckle.AspNetCore.Swagger": "6.4.0",
           "xunit": "2.4.2"
         },
         "runtime": {

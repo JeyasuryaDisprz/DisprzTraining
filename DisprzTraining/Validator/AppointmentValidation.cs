@@ -1,39 +1,29 @@
-using System;
 using System.Globalization;
 using DisprzTraining.Models;
 using DisprzTraining.Data;
+using DisprzTraining.Dto;
 
 namespace DisprzTraining.validation
 {
     public class AppointmentValidation : IAppointmentValidation
     {
 
-        public async Task<bool> ValideDate(Appointment appointment)
-        {
-            // if (appointment.StartDateTime < DateTime.Now.Date)
-            // {
-            //     return await Task.FromResult(false);
-            // }
+        public async Task<Appointment> ExistingAppointment(AppointmentDto appointmentDto)
+        {          
 
-            if ((appointment.StartDateTime >= appointment.EndDateTime))
-            {
-                throw new Exception("Invalid DateInput, EndTime should be greater than StartTime");
-            }
-
-            var dateString = DateOnly.FromDateTime((DateTime)appointment.StartDateTime);
+            var dateString = DateOnly.FromDateTime((DateTime)appointmentDto.StartDateTime);
             var stringDate = dateString.ToString("yyyy/MM/dd");
            
             var AppointmentsInDate = await FindAppointments(stringDate);
             foreach (var appointmentDB in AppointmentsInDate)
             {
-                if ((appointment.StartDateTime >= appointmentDB.StartDateTime && appointment.StartDateTime < appointmentDB.EndDateTime) ||
-                        (appointment.EndDateTime > appointmentDB.StartDateTime && appointment.EndDateTime <= appointmentDB.EndDateTime))
+                if (appointmentDto.StartDateTime < appointmentDB.EndDateTime && appointmentDto.EndDateTime > appointmentDB.StartDateTime )
                 {
-                    return await Task.FromResult(false);
+                    return(appointmentDB);
                 }
             }
 
-            return await Task.FromResult(true);
+            return (null);
         }
 
         public async Task<List<Appointment>> FindAppointments(string? date)
@@ -43,10 +33,23 @@ namespace DisprzTraining.validation
             return await Task.FromResult(AppointmentData.Appointments.FindAll(x => x.StartDateTime >= dateFormatted && x.StartDateTime < dateFormatted.AddDays(1)));
         }
 
-        public async Task<Appointment> FindAppointment(Guid Id)
-        {
-            return await Task.FromResult(AppointmentData.Appointments.Find(x => x.Id == Id));
-        }
+        // public async Task<bool> ExistingAppointment(AppointmentDto appointmentDto)
+        // {          
 
+        //     var dateString = DateOnly.FromDateTime((DateTime)appointmentDto.StartDateTime);
+        //     var stringDate = dateString.ToString("yyyy/MM/dd");
+           
+        //     var AppointmentsInDate = await FindAppointments(stringDate);
+        //     foreach (var appointmentDB in AppointmentsInDate)
+        //     {
+        //         if ((appointmentDto.StartDateTime >= appointmentDB.StartDateTime && appointmentDto.StartDateTime < appointmentDB.EndDateTime) ||
+        //                 (appointmentDto.EndDateTime > appointmentDB.StartDateTime && appointmentDto.EndDateTime <= appointmentDB.EndDateTime))
+        //         {
+        //             return await Task.FromResult(false);
+        //         }
+        //     }
+
+        //     return await Task.FromResult(true);
+        // }
     }
 }

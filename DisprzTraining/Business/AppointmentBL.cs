@@ -1,11 +1,8 @@
 using DisprzTraining.Models;
-using DisprzTraining.Data;
 using DisprzTraining.validation;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
-using System.Web;
-using System.Globalization;
+using DisprzTraining.Dto;
+using DisprzTraining.DataAccess;
+using DisprzTraining.Result;
 
 namespace DisprzTraining.Business
 {
@@ -13,63 +10,37 @@ namespace DisprzTraining.Business
     {
 
         private readonly IAppointmentValidation _appointmentValidation;
+        private readonly IAppointmentDAL _appointmentDAL;
 
-        public AppointmentBL(IAppointmentValidation appointmentValidation)
+        public AppointmentBL(IAppointmentDAL appointmentDAL)
         {
-            _appointmentValidation = appointmentValidation;
+            _appointmentDAL = appointmentDAL;
         }
 
-        public async Task<bool> CreateAsync(Appointment appointment)
+        public async Task<ResultModel> CreateAsync(AppointmentDto appointmentDto)
         {
-
-            // DateTime.Today.
-
             try
             {
-                bool result = await _appointmentValidation.ValideDate(appointment);
-                if (result)
-                {
-                    AppointmentData.Appointments.Add(appointment);
-                    return true;
-                }
+                return (await _appointmentDAL.CreateAppointmentAsync(appointmentDto));
             }
             catch(Exception e){
                 throw new Exception(e.Message);
             }
-            return false;
         }
 
-        public async Task<List<Appointment>> GetAsync(string? date)
+        public async Task<List<Appointment>> GetAsync(string date)
         {
-
-            var appointmentListInDate = await _appointmentValidation.FindAppointments(date);
-            appointmentListInDate = appointmentListInDate.OrderBy(x => x.StartDateTime).ToList();
-
-            if (appointmentListInDate.Count > 0)
-            {
-                return appointmentListInDate;
-            }
-            return new List<Appointment>();
+            return await _appointmentDAL.GetAppointmentAsync(date);
+           
         }
         public async Task<Appointment> GetIdAsync(Guid Id)
         {
-            var appoinment = new Appointment();
-            appoinment = await _appointmentValidation.FindAppointment(Id);
-            // return await Task.FromResult(appoinment);
-            return appoinment;
+            return await _appointmentDAL.GetAppointmentByIdAsync(Id);
         }
 
         public async Task<bool> DeleteAsync(Guid Id)
         {
-            var deleteAppointment = new Appointment();
-            deleteAppointment = await _appointmentValidation.FindAppointment(Id);
-
-            if (deleteAppointment.Title != "")
-            {
-                AppointmentData.Appointments.Remove(deleteAppointment);
-                return await Task.FromResult(true);
-            }
-            return await Task.FromResult(false);
+            return await _appointmentDAL.DeleteAppointmentAsync(Id);
         }
     }
 }
