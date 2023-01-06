@@ -1,13 +1,14 @@
 using DisprzTraining.Models;
-using DisprzTraining.Business;
 using DisprzTraining.validation;
+using DisprzTraining.Data;
 using DisprzTraining.Dto;
+using System.Globalization;
+using DisprzTraining.Result;
 
 namespace DisprzTraining.DataAccess
 {
     public class AppointmentDAL : IAppointmentDAL
     {
-        private List<Appointment> Appointments = new(){};
         private readonly IAppointmentValidation _appointmentValidation;
 
         public AppointmentDAL(IAppointmentValidation appointmentValidation)
@@ -15,83 +16,70 @@ namespace DisprzTraining.DataAccess
             _appointmentValidation = appointmentValidation;
         }
 
-        public async Task<bool> CreateAppointmentAsync(AppointmentDto appointmentDto)
+        public async Task<ResultModel> CreateAppointmentAsync(AppointmentDto appointmentDto)
         {
-          try
+            Appointment result = await _appointmentValidation.ExistingAppointment(appointmentDto);
+            if (result is null)
             {
-                // bool result = await _appointmentValidation.ExistingAppointments(appointmentDto);
-                if (ExistingAppointments(appointmentDto))
+                var appointment = new Appointment()
                 {
-                    Appointment appointment = new() {
-                        Id = Guid.NewGuid(),
-                        Title = appointmentDto.Title,
-                        StartDateTime = appointmentDto.StartDateTime,
-                        EndDateTime = appointmentDto.EndDateTime,
-                        Description = appointmentDto.Description
-                    };
+                    Id = Guid.NewGuid(),
+                    StartDateTime = appointmentDto.StartDateTime,
+                    EndDateTime = appointmentDto.EndDateTime,
+                    Title = appointmentDto.Title,
+                    Description = appointmentDto.Description
+                };
 
-                    Appointments.Add(appointment);
-                    return true;
-                }
-                else{
-                    return false;
-                }
+                AppointmentData.Appointments.Add(appointment);
+                return new ResultModel(){ResultStatusCode = 201, appointment = appointment, Message = $"Appointment added at Id : {appointment.Id}"};
             }
-            catch{
-                throw new Exception();
+            else
+            {
+                return new ResultModel(){ResultStatusCode = 409, appointment = result, Message = $"Meet already found between {result.StartDateTime?.ToString("hh:mm:tt")} - {result.EndDateTime?.ToString("hh:mm:tt")}"};
             }
         }
 
-        public async Task<List<Appointment>> GetAppointmentAsync(DateTime date)
+        public async Task<List<Appointment>> GetAppointmentAsync(string date)
         {
+            DateTime dateFormatted = DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
-            // var appointmentListInDate = await _appointmentValidation.FindAppointments(date);
-            // appointmentListInDate = appointmentListInDate.OrderBy(x => x.StartDateTime).ToList();
-
-            // if (appointmentListInDate.Count > 0)
-            // {
-            //     return appointmentListInDate;
-            // }
-
-            // return new List<Appointment>();
-
-            return Appointments;
-
-            // return (await Task.FromResult(
-            //     (from appointment in Appointments
-            //     where appointment.StartDateTime >=date && appointment.StartDateTime < date.AddDays(1)
-            //     orderby appointment.StartDateTime ascending
-            //     select appointment).ToList()
-            // ));
+            return 
+                (from appointment in AppointmentData.Appointments
+                where appointment.StartDateTime >= dateFormatted && appointment.EndDateTime < dateFormatted.AddDays(1)
+                orderby appointment.StartDateTime ascending
+                select appointment).ToList();
 
         }
 
+        public async Task<Appointment?> GetAppointmentByIdAsync(Guid Id){
+            return
+                (from appointment in AppointmentData.Appointments
+                where appointment.Id == Id
+                select appointment).FirstOrDefault() as Appointment;
+        }
         public async Task<bool> DeleteAppointmentAsync(Guid Id)
         {
-            var appoinments = 
-                (from appointment in Appointments
-                where appointment.Id == Id
-                select appointment) as Appointment;
+            var appoinment = AppointmentData.Appointments.Where(appoinment => appoinment.Id == Id).SingleOrDefault();
 
-            if (appoinments is not null)
+            if (appoinment is not null)
             {
-                Appointments.Remove(appoinments);
+                AppointmentData.Appointments.Remove((Appointment)appoinment);
                 return await Task.FromResult(true);
             }
             return await Task.FromResult(false);
         }
 
-        public bool ExistingAppointments(AppointmentDto appointmentDto){
-            foreach (var appointmentDB in Appointments)
-            {
-                if ((appointmentDto.StartDateTime >= appointmentDB.StartDateTime && appointmentDto.StartDateTime < appointmentDB.EndDateTime) ||
-                        (appointmentDto.EndDateTime > appointmentDB.StartDateTime && appointmentDto.EndDateTime <= appointmentDB.EndDateTime))
-                {
-                    return false;
-                }
-            }
+        // public bool ExistingAppointments(AppointmentDto appointmentDto){
+        //     foreach (var appointmentDB in Appointments)
+        //     {
+        //         if ((appointmentDto.StartDateTime >= appointmentDB.StartDateTime && appointmentDto.StartDateTime < appointmentDB.EndDateTime) ||
+        //                 (appointmentDto.EndDateTime > appointmentDB.StartDateTime && appointmentDto.EndDateTime <= appointmentDB.EndDateTime))
+        //         {
+        //             return false;
+        //         }
+        //     }
 
-            return true;
-        }
+        //     return true;
+        // }
     }
 }

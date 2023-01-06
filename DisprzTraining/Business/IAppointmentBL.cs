@@ -1,16 +1,14 @@
-using System.Threading.Tasks;
+using DisprzTraining.Dto;
 using DisprzTraining.Models;
-using Microsoft.AspNetCore.Mvc;
+using DisprzTraining.Result;
 
 namespace DisprzTraining.Business
 {
     public interface IAppointmentBL
     {
-        // Task<HelloWorld> SayHelloWorld();
-        public Task<bool> CreateAsync(Appointment appointment);
+        public Task<ResultModel> CreateAsync(AppointmentDto appointmentDto);
         public Task<List<Appointment>> GetAsync(string date);
         public Task<Appointment> GetIdAsync(Guid Id);
         public Task<bool> DeleteAsync(Guid Id);
-
     }
 }

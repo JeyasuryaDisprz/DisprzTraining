@@ -12,148 +12,213 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DisprzTraining.Dto;
+using DisprzTraining.Result;
 
 namespace DisprzTraining.Tests
 {
     public class AppointmentBLTest
     {
         [Fact]
-        public async Task CreateAsync_WithAppointment_ReturnTrue()
+        public async Task CreateAsync_WithAppointmentDto_ReturnAppointment()
         {
-            // Arrange
-            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC", "Test");
-            var testAppointmentList = new List<Appointment>();
-            var MockValidation = new Mock<IAppointmentValidation>();
-            MockValidation.Setup(t => t.ValideDate(testAppointment)).ReturnsAsync(true);
-            var sut = new AppointmentBL(MockValidation.Object);
+            var MockAppointment = new Mock<IAppointmentDAL>();
+            MockAppointment.Setup(t=>t.CreateAppointmentAsync(It.IsAny<AppointmentDto>())).ReturnsAsync(new ResultModel());
+            var sut = new AppointmentBL(MockAppointment.Object);
 
-            // Act
-            var result = await sut.CreateAsync(testAppointment);
+            var result = await sut.CreateAsync(It.IsAny<AppointmentDto>());
 
-            // Assert
-            Assert.True(result);
+            Assert.IsType<ResultModel>(result);
+        }
+        [Fact]
+        public async Task CreateAsync_WithAppointmentDto_ReturnException()
+        {
+            var MockAppointment = new Mock<IAppointmentDAL>();
+            MockAppointment.Setup(t=>t.CreateAppointmentAsync(It.IsAny<AppointmentDto>())).ThrowsAsync(new Exception());
+            var sut = new AppointmentBL(MockAppointment.Object);
+
+            await Assert.ThrowsAsync<Exception>(()=> sut.CreateAsync(It.IsAny<AppointmentDto>()));
         }
 
         [Fact]
-        public async Task CreateAsync_WithExistingAppointment_ReturnFalse()
+        public async Task GetAsync_WithDate_ReturnAppointments()
         {
-            // Arrange
-            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC", "Test");
-            var testAppointmentList = new List<Appointment>();
-            testAppointmentList.Add(testAppointment);
-            var MockValidation = new Mock<IAppointmentValidation>();
-            MockValidation.Setup(t => t.ValideDate(testAppointment)).ReturnsAsync(false);
-            var sut = new AppointmentBL(MockValidation.Object);
+            var MockAppointment = new Mock<IAppointmentDAL>();
+            MockAppointment.Setup(t=>t.GetAppointmentAsync("2022-12-23")).ReturnsAsync(new List<Appointment>());
+            var sut = new AppointmentBL(MockAppointment.Object);
 
-            // Act
-            var result = await sut.CreateAsync(testAppointment);
+            var result = await sut.GetAsync("2022-12-23");
 
-            // Assert
-            Assert.False(result);
+            Assert.IsType<List<Appointment>>(result);
         }
 
         [Fact]
-        public async Task CreateAsync_WithInvalidDate_ReturnException(){
-
-            var MockValidation = new Mock<IAppointmentValidation>();
-            MockValidation.Setup(t => t.ValideDate(It.IsAny<Appointment>())).ThrowsAsync(new Exception());
-            var sut = new AppointmentBL(MockValidation.Object);
-
-            // Assert
-            Assert.ThrowsAsync<Exception>(()=> sut.CreateAsync(It.IsAny<Appointment>()));
-        }
-
-        [Fact]
-        public async Task GetAsync_WithDate_ReturnList()
+        public async Task DeleteAsync_ById_ReturnTrue()
         {
-            // Arrange
-            var testDate = "2022-12-12";
-            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC", "Test");
-            var testAppointmentList = new List<Appointment>();
-            testAppointmentList.Add(testAppointment);
-            var MockValidation = new Mock<IAppointmentValidation>();
-            MockValidation.Setup(t => t.FindAppointments(testDate)).ReturnsAsync(testAppointmentList);
+            var testAppointmentId = Guid.NewGuid();
+            var MockAppointment = new Mock<IAppointmentDAL>();
+            MockAppointment.Setup(t=>t.DeleteAppointmentAsync(testAppointmentId)).ReturnsAsync(true);
+            var sut = new AppointmentBL(MockAppointment.Object);
 
-            var sut = new AppointmentBL(MockValidation.Object);
+            var result = await sut.DeleteAsync(testAppointmentId);
 
-            // Act
-            var result = await sut.GetAsync(testDate);
-
-
-            // Assert
-            Assert.Equal(testAppointmentList, result);
+            Assert.Equal(true,result);
         }
+        
         [Fact]
-        public async Task GetAsync_WitUnExistingDate_ReturnEmptyList()
+        public async Task DeleteAsync_ById_ReturnFalse()
         {
-            // Arrange
-            var testDate = "2022-12-13";
-            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC", "Test");
-            var testAppointmentList = new List<Appointment>();
-            testAppointmentList.Add(testAppointment);
-            var MockValidation = new Mock<IAppointmentValidation>();
-            MockValidation.Setup(t => t.FindAppointments(testDate)).ReturnsAsync(new List<Appointment>());
+            var MockAppointment = new Mock<IAppointmentDAL>();
+            MockAppointment.Setup(t=>t.DeleteAppointmentAsync(Guid.NewGuid())).ReturnsAsync(false);
+            var sut = new AppointmentBL(MockAppointment.Object);
 
-            var sut = new AppointmentBL(MockValidation.Object);
+            var result = await sut.DeleteAsync(Guid.NewGuid());
 
-            // Act
-            var result = await sut.GetAsync(testDate);
-
-
-            // Assert
-            Assert.NotEqual(testAppointmentList, result);
+            Assert.Equal(false,result);
         }
 
-        [Fact]
-        public async Task GetTaskAsync_WithId_ReturnAppointment()
-        {
-            // Arrange
-            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC", "Test");
-            var testAppointmentList = new List<Appointment>();
-            testAppointmentList.Add(testAppointment);
-            var MockValidation = new Mock<IAppointmentValidation>();
-            MockValidation.Setup(t => t.FindAppointment(testAppointment.Id)).ReturnsAsync(testAppointment);
 
-            var sut = new AppointmentBL(MockValidation.Object);
 
-            // Act
-            var result = await sut.GetIdAsync(testAppointment.Id);
 
-            // Assert
-            Assert.Equal(testAppointment, result);
-        }
 
-        [Fact]
-        public async Task DeleteAsync_WithEventDateTime_ReturnTrue()
-        {
-            // Arrange
-            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC", "Test");
-            var MockValidation = new Mock<IAppointmentValidation>();
-            MockValidation.Setup(t => t.FindAppointment(testAppointment.Id)).ReturnsAsync(testAppointment);
-            var sut = new AppointmentBL(MockValidation.Object);
 
-            // Act
-            var result = await sut.DeleteAsync(testAppointment.Id);
+//         [Fact]
+//         public async Task CreateAsync_WithAppointment_ReturnTrue()
+//         {
+//             // Arrange
+//             var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC", "Test");
+//             var testAppointmentList = new List<Appointment>();
+//             var MockValidation = new Mock<IAppointmentValidation>();
+//             MockValidation.Setup(t => t.ValideDate(testAppointment)).ReturnsAsync(true);
+//             var sut = new AppointmentBL(MockValidation.Object);
 
-            // Assert
-            Assert.True(result);
-        }
+//             // Act
+//             var result = await sut.CreateAsync(testAppointment);
 
-        [Fact]
-        public async Task DeleteAsync_WithEventDateTime_ReturnFalse()
-        {
-            // Arrange
-            var testID = new Guid();
-            var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC","Test");
-            var MockValidation = new Mock<IAppointmentValidation>();
-            MockValidation.Setup(t => t.FindAppointment(testID)).ReturnsAsync(new Appointment());
-            var sut = new AppointmentBL(MockValidation.Object);
+//             // Assert
+//             Assert.True(result);
+//         }
 
-            // Act
-            var result = await sut.DeleteAsync(testID);
+//         [Fact]
+//         public async Task CreateAsync_WithExistingAppointment_ReturnFalse()
+//         {
+//             // Arrange
+//             var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC", "Test");
+//             var testAppointmentList = new List<Appointment>();
+//             testAppointmentList.Add(testAppointment);
+//             var MockValidation = new Mock<IAppointmentValidation>();
+//             MockValidation.Setup(t => t.ValideDate(testAppointment)).ReturnsAsync(false);
+//             var sut = new AppointmentBL(MockValidation.Object);
 
-            // Assert
-            Assert.False(result);
-        }
+//             // Act
+//             var result = await sut.CreateAsync(testAppointment);
+
+//             // Assert
+//             Assert.False(result);
+//         }
+
+//         [Fact]
+//         public async Task CreateAsync_WithInvalidDate_ReturnException(){
+
+//             var MockValidation = new Mock<IAppointmentValidation>();
+//             MockValidation.Setup(t => t.ValideDate(It.IsAny<Appointment>())).ThrowsAsync(new Exception());
+//             var sut = new AppointmentBL(MockValidation.Object);
+
+//             // Assert
+//             Assert.ThrowsAsync<Exception>(()=> sut.CreateAsync(It.IsAny<Appointment>()));
+//         }
+
+//         [Fact]
+//         public async Task GetAsync_WithDate_ReturnList()
+//         {
+//             // Arrange
+//             var testDate = "2022-12-12";
+//             var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC", "Test");
+//             var testAppointmentList = new List<Appointment>();
+//             testAppointmentList.Add(testAppointment);
+//             var MockValidation = new Mock<IAppointmentValidation>();
+//             MockValidation.Setup(t => t.FindAppointments(testDate)).ReturnsAsync(testAppointmentList);
+
+//             var sut = new AppointmentBL(MockValidation.Object);
+
+//             // Act
+//             var result = await sut.GetAsync(testDate);
+
+
+//             // Assert
+//             Assert.Equal(testAppointmentList, result);
+//         }
+//         [Fact]
+//         public async Task GetAsync_WitUnExistingDate_ReturnEmptyList()
+//         {
+//             // Arrange
+//             var testDate = "2022-12-13";
+//             var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC", "Test");
+//             var testAppointmentList = new List<Appointment>();
+//             testAppointmentList.Add(testAppointment);
+//             var MockValidation = new Mock<IAppointmentValidation>();
+//             MockValidation.Setup(t => t.FindAppointments(testDate)).ReturnsAsync(new List<Appointment>());
+
+//             var sut = new AppointmentBL(MockValidation.Object);
+
+//             // Act
+//             var result = await sut.GetAsync(testDate);
+
+
+//             // Assert
+//             Assert.NotEqual(testAppointmentList, result);
+//         }
+
+//         [Fact]
+//         public async Task GetTaskAsync_WithId_ReturnAppointment()
+//         {
+//             // Arrange
+//             var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC", "Test");
+//             var testAppointmentList = new List<Appointment>();
+//             testAppointmentList.Add(testAppointment);
+//             var MockValidation = new Mock<IAppointmentValidation>();
+//             MockValidation.Setup(t => t.FindAppointment(testAppointment.Id)).ReturnsAsync(testAppointment);
+
+//             var sut = new AppointmentBL(MockValidation.Object);
+
+//             // Act
+//             var result = await sut.GetIdAsync(testAppointment.Id);
+
+//             // Assert
+//             Assert.Equal(testAppointment, result);
+//         }
+
+//         [Fact]
+//         public async Task DeleteAsync_WithEventDateTime_ReturnTrue()
+//         {
+//             // Arrange
+//             var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC", "Test");
+//             var MockValidation = new Mock<IAppointmentValidation>();
+//             MockValidation.Setup(t => t.FindAppointment(testAppointment.Id)).ReturnsAsync(testAppointment);
+//             var sut = new AppointmentBL(MockValidation.Object);
+
+//             // Act
+//             var result = await sut.DeleteAsync(testAppointment.Id);
+
+//             // Assert
+//             Assert.True(result);
+//         }
+
+//         [Fact]
+//         public async Task DeleteAsync_WithEventDateTime_ReturnFalse()
+//         {
+//             // Arrange
+//             var testID = new Guid();
+//             var testAppointment = new Appointment(new Guid("9245fe4a-d402-451c-b9ed-9c1a04247482"), new DateTime(2022, 12, 12, 10, 00, 00), new DateTime(2022, 12, 12, 12, 00, 00), "ABC","Test");
+//             var MockValidation = new Mock<IAppointmentValidation>();
+//             MockValidation.Setup(t => t.FindAppointment(testID)).ReturnsAsync(new Appointment());
+//             var sut = new AppointmentBL(MockValidation.Object);
+
+//             // Act
+//             var result = await sut.DeleteAsync(testID);
+
+//             // Assert
+//             Assert.False(result);
+//         }
     }
 }

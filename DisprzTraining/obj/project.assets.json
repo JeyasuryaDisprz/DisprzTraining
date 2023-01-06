@@ -9936,11 +9936,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj",
+      "projectUniqueName": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj",
       "projectName": "DisprzTraining",
-      "projectPath": "C:\\Projects\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj",
+      "projectPath": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj",
       "packagesPath": "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\DisprzTraining\\DisprzTraining\\obj\\",
+      "outputPath": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jeyasurya.r_disprz\\AppData\\Roaming\\NuGet\\NuGet.Config"

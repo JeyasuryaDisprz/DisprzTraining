@@ -3710,6 +3710,7 @@
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.17.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.0",
           "Swashbuckle.AspNetCore": "6.4.0",
+          "Swashbuckle.AspNetCore.Swagger": "6.4.0",
           "xunit": "2.4.2"
         },
         "compile": {
@@ -11082,11 +11083,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Projects\\DisprzTraining\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
+      "projectUniqueName": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
       "projectName": "DisprzTraining.Tests",
-      "projectPath": "c:\\Projects\\DisprzTraining\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
+      "projectPath": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
       "packagesPath": "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\",
-      "outputPath": "c:\\Projects\\DisprzTraining\\DisprzTraining.Tests\\obj\\",
+      "outputPath": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jeyasurya.r_disprz\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -11101,8 +11102,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "c:\\Projects\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj": {
-              "projectPath": "c:\\Projects\\DisprzTraining\\DisprzTraining\\DisprzTraining.csproj"
+            "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj": {
+              "projectPath": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj"
             }
           }
         }
