@@ -15,7 +15,7 @@ namespace DisprzTraining.Utils
 
             services.AddScoped<IAppointmentBL, AppointmentBL>();
             services.AddScoped<IAppointmentDAL, AppointmentDAL>();
-            services.AddScoped<IAppointmentValidation, AppointmentValidation>();
+            // services.AddScoped<IAppointmentValidation, AppointmentValidation>();
         
         }
     }

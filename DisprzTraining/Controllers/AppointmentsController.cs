@@ -20,35 +20,26 @@ namespace DisprzTraining.Controllers
         }
 
         [HttpPost("/api/v1/appointments")]
-        [ProducesResponseType(typeof(ResultModel), 201)]
-        [ProducesResponseType(typeof(ResultModel), 409)]
-        [ProducesResponseType(typeof(string), 400)]
+        [ProducesResponseType(typeof(CreatedModel), 201)]
+        [ProducesResponseType(typeof(ErrorModel), 409)]
+        [ProducesResponseType(typeof(ErrorModel), 400)]
         public async Task<ActionResult> Create(AppointmentDto appointmentDto)
         {
-            ResultModel check = new(){ResultStatusCode= 202};
+            ResultModel check = new(){};
             if (appointmentDto.IsValid(check))
             {
                 var result = await _appointmentBL.CreateAsync(appointmentDto);
-                return (result.ResultStatusCode == 201)? Created("",result.Message): Conflict(result.Message);
-            //     if (result.ResultStatusCode == 201)
-            //     {
-            //         return Created("", result.Message);
-            //     }
-            //     else
-            //     {
-            //         return Conflict(result.Message);
-            //     }
+                return (result.ErrorMessage == "")? Created("",new CreatedModel(){Id = result.appointmentId}): Conflict(new ErrorModel(){error = result.ErrorMessage});
             }
             else
             {
-                // return BadRequest(new { message = "Start Time should be lesser than End Time | Appointment can't set for Past time" });
-                return BadRequest(check.Message);
+                return BadRequest(new ErrorModel(){error = check.ErrorMessage});
             }
         }
 
-        [HttpGet("/api/v1/appointments/")]
+        [HttpGet("/api/v1/appointments")]
         [ProducesResponseType(typeof(List<Appointment>), 200)]
-        [ProducesResponseType(typeof(List<Appointment>), 400)]
+        [ProducesResponseType(typeof(ErrorModel), 400)]
         public async Task<ActionResult> Get([FromQuery][Required][RegularExpression(@"^[0-9]{4}-[0-9]{2}-[0-9]{2}$", ErrorMessage ="Enter date as YYYY-MM-DD format")]string date)
         {
             try{
@@ -57,7 +48,7 @@ namespace DisprzTraining.Controllers
                 return Ok(appointmentList);
             }
             catch{
-                return BadRequest("Invalid dateFormat");
+                return BadRequest(new ErrorModel(){ error = "Invalid date format. Expected format : YYYY-MM-DD (i.e)2023-01-31"});
             }
         }
 
@@ -75,22 +66,42 @@ namespace DisprzTraining.Controllers
         //     }
         // }
 
-        [HttpDelete("/api/v1/appointments/id/{id}")]
+        // [HttpDelete("/api/v1/appointments/{id}")]
+        // [ProducesResponseType(StatusCodes.Status204NoContent)]
+        // [ProducesResponseType(typeof(ErrorModel),StatusCodes.Status404NotFound)]
+        // public async Task<IActionResult> Delete(Guid id)
+        // {
+        //     try{
+        //         if (await _appointmentBL.DeleteAsync(id))
+        //         {
+        //             return NoContent();
+        //         }
+        //         else{
+        //             return NotFound(new ErrorModel(){error = $"Meeting with Id:{id} not found"});
+        //         }
+        //     }
+        //     catch{
+        //         return NotFound(new ErrorModel(){error = $"Meeting not Found" });
+        //     }
+        // }
+
+        [HttpDelete("/api/v1/appointments/{startDateTime}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(string),StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Delete(Guid id)
+        [ProducesResponseType(typeof(ErrorModel),StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Delete(DateTime startDateTime)
         {
+            // id with startDateTime
             try{
-                if (await _appointmentBL.DeleteAsync(id))
+                if (_appointmentBL.Delete(startDateTime))
                 {
                     return NoContent();
                 }
                 else{
-                    return NotFound(new {message = $"Meeting with Id:{id} not found"});
+                    return NotFound(new ErrorModel(){error = $"Meeting not found at {startDateTime.ToString("hh:mm:tt")}"});
                 }
             }
             catch{
-                return NotFound(new { message = $"Meeting not Found" });
+                return NotFound(new ErrorModel(){error = $"Meeting not Found" });
             }
         }
     }

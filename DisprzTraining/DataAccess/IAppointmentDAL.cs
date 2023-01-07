@@ -8,5 +8,9 @@ namespace DisprzTraining.DataAccess{
         public Task<List<Appointment>> GetAppointmentAsync(string date);
         public Task<Appointment> GetAppointmentByIdAsync(Guid Id);
         public Task<bool> DeleteAppointmentAsync(Guid Id);
+        public bool DeleteAppointment(DateTime startDateTime);
+        public Appointment? ExistingAppointment(AppointmentDto appointmentDto);
+        public List<Appointment> FindAppointments(string? date);
+
     }
 }

@@ -2,29 +2,29 @@ using System.Globalization;
 using DisprzTraining.Models;
 using DisprzTraining.Data;
 using DisprzTraining.Dto;
+using DisprzTraining.Extensions;
 
 namespace DisprzTraining.validation
 {
     public class AppointmentValidation : IAppointmentValidation
     {
 
-        public async Task<Appointment> ExistingAppointment(AppointmentDto appointmentDto)
-        {          
+        // public async Task<Appointment>? ExistingAppointment(AppointmentDto appointmentDto)
+        // {          
 
-            var dateString = DateOnly.FromDateTime((DateTime)appointmentDto.StartDateTime);
-            var stringDate = dateString.ToString("yyyy/MM/dd");
+        //     var dateString = DateOnly.FromDateTime((DateTime)appointmentDto.StartDateTime);
+        //     var stringDate = dateString.ToString("yyyy/MM/dd");
            
-            var AppointmentsInDate = await FindAppointments(stringDate);
-            foreach (var appointmentDB in AppointmentsInDate)
-            {
-                if (appointmentDB.StartDateTime < appointmentDto.EndDateTime && appointmentDB.EndDateTime > appointmentDto.StartDateTime )
-                {
-                    return(appointmentDB);
-                }
-            }
-
-            return (null);
-        }
+        //     var AppointmentsInDate = await FindAppointments(stringDate);
+        //     foreach (var appointmentDB in AppointmentsInDate)
+        //     {
+        //         if (appointmentDB.StartDateTime < appointmentDto.EndDateTime && appointmentDB.EndDateTime > appointmentDto.StartDateTime )
+        //         {
+        //             return(appointmentDB);
+        //         }
+        //     }
+        //     return (null);
+        // }
 
         // public async Task<bool> ExistingAppointment(AppointmentDto appointmentDto)
         // {          
@@ -45,12 +45,12 @@ namespace DisprzTraining.validation
         //     return await Task.FromResult(true);
         // }
 
-        public async Task<List<Appointment>> FindAppointments(string? date)
-        {
-            DateTime dateFormatted = DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+        // public async Task<List<Appointment>> FindAppointments(string? date)
+        // {
+        //     DateTime dateFormatted = DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
-            return await Task.FromResult(AppointmentData.Appointments.FindAll(x => x.StartDateTime >= dateFormatted && x.StartDateTime < dateFormatted.AddDays(1)));
-        }
+        //     return await Task.FromResult(AppointmentData.Appointments.FindAll(x => x.StartDateTime >= dateFormatted && x.StartDateTime < dateFormatted.AddDays(1)));
+        // }
 
     }
 }

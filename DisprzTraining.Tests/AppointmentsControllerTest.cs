@@ -45,13 +45,20 @@ namespace DisprzTraining.Tests{
                 Title = "ABC"
             };
 
+            Appointment testAppointment = new() {
+                Id = Guid.NewGuid(),
+                StartDateTime = new DateTime(2023,02,10,10,00,00),
+                EndDateTime = new DateTime(2023,02,10,12,00,00),
+                Title = "ABC"
+            };
+
             var MockAppointment = new Mock<IAppointmentBL>();
-            MockAppointment.Setup(t=>t.CreateAsync(testAppointmentDto)).ReturnsAsync(new ResultModel(){ResultStatusCode=201});
+            MockAppointment.Setup(t=>t.CreateAsync(testAppointmentDto)).ReturnsAsync(new ResultModel(){appointmentId = testAppointment.Id, ErrorMessage = ""});
         
             var sut = new AppointmentsController(MockAppointment.Object);
 
             // Act
-            var result = await sut.Create(testAppointmentDto) as CreatedResult ;
+            var result = await sut.Create(testAppointmentDto) as CreatedResult;
             
             // Assert
             Assert.True(result?.StatusCode.Equals(201));
@@ -67,7 +74,7 @@ namespace DisprzTraining.Tests{
                 Title = "ABC"
             };
             var MockAppointment = new Mock<IAppointmentBL>();
-            MockAppointment.Setup(t=>t.CreateAsync(testAppointmentDto)).ReturnsAsync(new ResultModel(){ResultStatusCode=409});
+            MockAppointment.Setup(t=>t.CreateAsync(testAppointmentDto)).ReturnsAsync(new ResultModel(){ErrorMessage="Conflict"});
             var sut = new AppointmentsController(MockAppointment.Object);
 
             // Act
@@ -86,7 +93,7 @@ namespace DisprzTraining.Tests{
                 Title = "ABC"
             };
             var MockAppointment = new Mock<IAppointmentBL>();
-            MockAppointment.Setup(t=>t.CreateAsync(testAppointmentDto)).ReturnsAsync(new ResultModel(){ResultStatusCode=400});
+            MockAppointment.Setup(t=>t.CreateAsync(testAppointmentDto)).ReturnsAsync(new ResultModel(){ErrorMessage="Bad Request"});
             var sut = new AppointmentsController(MockAppointment.Object);
 
             // Act
@@ -99,13 +106,13 @@ namespace DisprzTraining.Tests{
         [Fact]
         public async Task Delete_WithEventTime_NoContentResult(){
             // Arrange
-            var testAppointment = new Appointment(new Guid(),new DateTime(2022,12,12,10,00,00),new DateTime(2022,12,12,12,00,00),"ABC","Test");
+            var testAppointment = new Appointment(new Guid(),new DateTime(2023,02,10,10,00,00),new DateTime(2023,02,10,12,00,00),"ABC","Test");
             var MockAppointment = new Mock<IAppointmentBL>();
             MockAppointment.Setup(t=>t.DeleteAsync(testAppointment.Id)).ReturnsAsync(true);
             var sut = new AppointmentsController(MockAppointment.Object);
 
             // Act
-            var result = await sut.Delete(testAppointment.Id) as NoContentResult;
+            var result = await sut.Delete(testAppointment.StartDateTime) as NoContentResult;
 
             // Assert
             Assert.Equal(204,result?.StatusCode);
@@ -119,7 +126,7 @@ namespace DisprzTraining.Tests{
             var sut = new AppointmentsController(MockAppointment.Object);
 
             // Act
-            var result = await sut.Delete(testAppointment.Id) as NotFoundObjectResult;
+            var result = await sut.Delete(testAppointment.StartDateTime) as NotFoundObjectResult;
 
             // Assert
             Assert.Equal(404,result?.StatusCode);

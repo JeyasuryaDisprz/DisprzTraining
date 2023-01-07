@@ -9,7 +9,7 @@ namespace DisprzTraining.Business
     public class AppointmentBL : IAppointmentBL
     {
 
-        private readonly IAppointmentValidation _appointmentValidation;
+        // private readonly IAppointmentValidation _appointmentValidation;
         private readonly IAppointmentDAL _appointmentDAL;
 
         public AppointmentBL(IAppointmentDAL appointmentDAL)
@@ -41,6 +41,10 @@ namespace DisprzTraining.Business
         public async Task<bool> DeleteAsync(Guid Id)
         {
             return await _appointmentDAL.DeleteAppointmentAsync(Id);
+        }
+        public bool Delete(DateTime startDateTime)
+        {
+            return  _appointmentDAL.DeleteAppointment(startDateTime);
         }
     }
 }
