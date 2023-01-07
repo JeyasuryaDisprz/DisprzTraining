@@ -20,6 +20,5 @@ namespace DisprzTraining.Dto
             else if(this.StartDateTime >= this.EndDateTime) { check.ErrorMessage = $"Start Time should be lesser than End Time"; return false;}
             else {return true;}
         }
-        
     }
 }

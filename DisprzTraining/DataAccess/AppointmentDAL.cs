@@ -106,6 +106,11 @@ namespace DisprzTraining.DataAccess
             Appointments.Add(appointment);
         }
 
+
+
+
+
+
         public int BinarySearchAppointments(DateTime startDateTime)
         {
             int start = 0, end = Appointments.Count() - 1;
