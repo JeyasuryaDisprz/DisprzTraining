@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "ZD7hJ5yhRMaL+c+93F/RUAkoRHth4NW+eWekq5i6JwxS+RkS8yky8XK6+QBOtcUSWsnjgyataftM+2Le+BJnxA==",
-=======
-  "dgSpecHash": "YiMW+UrJi71sWp/McRJz7AXxRZvROzHtUEc/KsbG8gNohJ+oe4h2I2c5J+zJsGtkmZx3ATbh0MfWgUA0C8BMFg==",
->>>>>>> d8716df5631ee5b0d3fedee0172a6d3928167912
   "success": true,
   "projectFilePath": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
   "expectedPackageFiles": [

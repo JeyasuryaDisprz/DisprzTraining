@@ -13,10 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DisprzTraining.Dto;
-<<<<<<< HEAD
 using DisprzTraining.Result;
-=======
->>>>>>> d8716df5631ee5b0d3fedee0172a6d3928167912
 
 namespace DisprzTraining.Tests
 {
@@ -26,20 +23,12 @@ namespace DisprzTraining.Tests
         public async Task CreateAsync_WithAppointmentDto_ReturnAppointment()
         {
             var MockAppointment = new Mock<IAppointmentDAL>();
-<<<<<<< HEAD
             MockAppointment.Setup(t=>t.CreateAppointmentAsync(It.IsAny<AppointmentDto>())).ReturnsAsync(new ResultModel());
-=======
-            MockAppointment.Setup(t=>t.CreateAppointmentAsync(It.IsAny<AppointmentDto>())).ReturnsAsync(new Appointment());
->>>>>>> d8716df5631ee5b0d3fedee0172a6d3928167912
             var sut = new AppointmentBL(MockAppointment.Object);
 
             var result = await sut.CreateAsync(It.IsAny<AppointmentDto>());
 
-<<<<<<< HEAD
             Assert.IsType<ResultModel>(result);
-=======
-            Assert.IsType<Appointment>(result);
->>>>>>> d8716df5631ee5b0d3fedee0172a6d3928167912
         }
         [Fact]
         public async Task CreateAsync_WithAppointmentDto_ReturnException()
@@ -55,10 +44,10 @@ namespace DisprzTraining.Tests
         public async Task GetAsync_WithDate_ReturnAppointments()
         {
             var MockAppointment = new Mock<IAppointmentDAL>();
-            MockAppointment.Setup(t=>t.GetAppointmentAsync("2022-12-23")).ReturnsAsync(new List<Appointment>());
+            MockAppointment.Setup(t=>t.GetAppointmentAsync("2022-12-23")).Returns(new List<Appointment>());
             var sut = new AppointmentBL(MockAppointment.Object);
 
-            var result = await sut.GetAsync("2022-12-23");
+            var result = sut.GetAsync("2022-12-23");
 
             Assert.IsType<List<Appointment>>(result);
         }
