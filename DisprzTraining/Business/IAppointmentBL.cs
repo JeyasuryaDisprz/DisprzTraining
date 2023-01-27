@@ -11,10 +11,8 @@ namespace DisprzTraining.Business
         public List<Appointment> Get(string date);
         public bool Delete(Guid Id);
         public ResultModel Update(Guid Id, AppointmentDto appointmentDto);
-        // public ResultModel CreateRoutine(AppointmentDto appointmentDto);
         public ResultModel CreateRoutine(AppointmentDto appointmentDto, DateTime limit);
         public List<RoutineDto> GetRoutines();
-        // public List<Dictionary<Guid,Appointment>> GetAllRoutine();
         public bool DeleteRoutine(Guid id);
         public Appointment GetById(Guid id);
     }

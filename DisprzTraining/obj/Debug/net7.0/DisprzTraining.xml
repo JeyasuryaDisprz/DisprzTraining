@@ -19,7 +19,7 @@
                     "endDateTime" : "2023-01-05T23:59:37.289Z",
                     "title": "Appointment Title",
                     "description": "Any description/short summary"
-                    "routine" : 0 (0 - None, 1 - Week, 2 - Month, 2+ - Invalid )
+                    "routine" : 0 (0 - None, 1 - Week, 2 - Month, other than that is Invalid )
                  }
             
              </remarks>
@@ -103,7 +103,7 @@
              <remarks>
              Sample request:
             
-                 DELETE /routines/{3fa85f64-5717-4562-b3fc-2c963f66afa6}
+                 DELETE /routines/3fa85f64-5717-4562-b3fc-2c963f66afa6
             
              </remarks>
              <response code="204">No Content</response>
@@ -118,7 +118,7 @@
              <remarks>
              Sample request:
             
-                 DELETE /appointments/{3fa85f64-5717-4562-b3fc-2c963f66afa6}
+                 DELETE /appointments/3fa85f64-5717-4562-b3fc-2c963f66afa6
             
              </remarks>
              <response code="200">Returns Appointment Data</response>

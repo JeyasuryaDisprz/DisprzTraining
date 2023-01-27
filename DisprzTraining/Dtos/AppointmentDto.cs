@@ -18,6 +18,7 @@ namespace DisprzTraining.Dto
             if(this.StartDateTime < DateTime.Now.AddMinutes(-1)) { check.message="Appointment can't set for Past time"; return false;}
             else if(this.StartDateTime >= this.EndDateTime) { check.message = "Start Time should be lesser than End Time"; return false;}
             else if(!Enum.IsDefined(typeof(Routine), this.Routine)) { check.message = "Routine selected is invalid"; return false;}
+            else if((this.Routine != Routine.None) && (this.StartDateTime.Date != this.EndDateTime.Date)) { check.message = "For selecting routine, select start and end date within a single day"; return false;}
             else {return true;}
         }
     }

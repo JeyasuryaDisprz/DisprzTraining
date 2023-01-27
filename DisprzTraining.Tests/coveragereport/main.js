@@ -221,10 +221,10 @@ var assemblies = [
   {
     "name": "DisprzTraining",
     "classes": [
-      { "name": "DisprzTraining.Business.AppointmentBL", "rp": "DisprzTraining_AppointmentBL.html", "cl": 71, "ucl": 0, "cal": 71, "tl": 155, "ct": "LineCoverage", "cbm": "-", "cb": 20, "tb": 20, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [] },
+      { "name": "DisprzTraining.Business.AppointmentBL", "rp": "DisprzTraining_AppointmentBL.html", "cl": 71, "ucl": 0, "cal": 71, "tl": 104, "ct": "LineCoverage", "cbm": "-", "cb": 20, "tb": 20, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [] },
       { "name": "DisprzTraining.Controllers.AppointmentsController", "rp": "DisprzTraining_AppointmentsController.html", "cl": 46, "ucl": 0, "cal": 46, "tl": 220, "ct": "LineCoverage", "cbm": "-", "cb": 16, "tb": 16, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [] },
       { "name": "DisprzTraining.DataAccess.AppointmentDAL", "rp": "DisprzTraining_AppointmentDAL.html", "cl": 147, "ucl": 0, "cal": 147, "tl": 192, "ct": "LineCoverage", "cbm": "-", "cb": 48, "tb": 48, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [] },
-      { "name": "DisprzTraining.Dto.AppointmentDto", "rp": "DisprzTraining_AppointmentDto.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 26, "ct": "LineCoverage", "cbm": "-", "cb": 6, "tb": 6, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [] },
+      { "name": "DisprzTraining.Dto.AppointmentDto", "rp": "DisprzTraining_AppointmentDto.html", "cl": 12, "ucl": 0, "cal": 12, "tl": 27, "ct": "LineCoverage", "cbm": "-", "cb": 10, "tb": 10, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [] },
       { "name": "DisprzTraining.Dto.RoutineDto", "rp": "DisprzTraining_RoutineDto.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 10, "ct": "LineCoverage", "cbm": "-", "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [] },
       { "name": "DisprzTraining.Models.Appointment", "rp": "DisprzTraining_Appointment.html", "cl": 2, "ucl": 0, "cal": 2, "tl": 12, "ct": "LineCoverage", "cbm": "-", "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [] },
       { "name": "DisprzTraining.Result.Error", "rp": "DisprzTraining_Error.html", "cl": 1, "ucl": 0, "cal": 1, "tl": 7, "ct": "LineCoverage", "cbm": "-", "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [] },

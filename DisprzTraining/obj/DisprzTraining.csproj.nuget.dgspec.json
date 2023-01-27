@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj": {}
+    "C:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj": {}
   },
   "projects": {
-    "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj": {
+    "C:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj",
+        "projectUniqueName": "C:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj",
         "projectName": "DisprzTraining",
-        "projectPath": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj",
+        "projectPath": "C:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj",
         "packagesPath": "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\",
-        "outputPath": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\obj\\",
+        "outputPath": "C:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jeyasurya.r_disprz\\AppData\\Roaming\\NuGet\\NuGet.Config"

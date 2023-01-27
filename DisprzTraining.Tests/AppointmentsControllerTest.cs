@@ -316,18 +316,28 @@ namespace DisprzTraining.Tests
                 Title = "ABC",
                 Routine = (Routine)3
             };
+            AppointmentDto testAppointmentDto4 = new()
+            {
+                StartDateTime = new DateTime(2023, 02, 01, 10, 00, 00),
+                EndDateTime = new DateTime(2023, 02, 02, 12, 00, 00),
+                Title = "ABC",
+                Routine = Routine.Week
+            };
 
             var result1 = appointmentsController.Create(testAppointmentDto) as BadRequestObjectResult;
             var result2 = appointmentsController.Create(testAppointmentDto2) as BadRequestObjectResult;
             var result3 = appointmentsController.Create(testAppointmentDto3) as BadRequestObjectResult;
+            var result4 = appointmentsController.Create(testAppointmentDto4) as BadRequestObjectResult;
 
             Assert.Equal(400, result1?.StatusCode);
             Assert.Equal(400, result2?.StatusCode);
             Assert.Equal(400, result3?.StatusCode);
+            Assert.Equal(400, result4?.StatusCode);
 
             result1?.Value.Should().BeEquivalentTo(new Error() { error = "Start Time should be lesser than End Time" });
             result2?.Value.Should().BeEquivalentTo(new Error() { error = "Appointment can't set for Past time" });
             result3?.Value.Should().BeEquivalentTo(new Error() { error = "Routine selected is invalid" });
+            result4?.Value.Should().BeEquivalentTo(new Error() { error = "For selecting routine, select start and end date within a single day" });
         }
 
         [Fact]
