@@ -250,3 +250,5 @@ c:\Projects\DisprzTraining - Copy\DisprzTraining\obj\Debug\net7.0\refint\DisprzT
 c:\Projects\DisprzTraining - Copy\DisprzTraining\obj\Debug\net7.0\DisprzTraining.pdb
 c:\Projects\DisprzTraining - Copy\DisprzTraining\obj\Debug\net7.0\DisprzTraining.genruntimeconfig.cache
 c:\Projects\DisprzTraining - Copy\DisprzTraining\obj\Debug\net7.0\ref\DisprzTraining.dll
+C:\Projects\DisprzTraining - Copy\DisprzTraining\bin\Debug\net7.0\DisprzTraining.xml
+C:\Projects\DisprzTraining - Copy\DisprzTraining\obj\Debug\net7.0\DisprzTraining.xml

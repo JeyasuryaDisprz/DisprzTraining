@@ -1,165 +1,192 @@
 using DisprzTraining.Models;
-using DisprzTraining.validation;
-using DisprzTraining.Data;
-using DisprzTraining.Dto;
 using System.Globalization;
 using DisprzTraining.Result;
+using DisprzTraining.Dto;
 
 namespace DisprzTraining.DataAccess
 {
     public class AppointmentDAL : IAppointmentDAL
     {
-        private static List<Appointment> Appointments = new() { };
+        private static Dictionary<Guid, Appointment> appointments = new();
 
-        public async Task<ResultModel> CreateAppointmentAsync(AppointmentDto appointmentDto)
+        public ResultModel CreateAppointment(Appointment appointment)
         {
-            Appointment? result = ExistingAppointment(appointmentDto);
-
+            var result = ExistingAppointment(appointment);
             if (result is null)
             {
-                var appointment = new Appointment()
-                {
-                    Id = Guid.NewGuid(),
-                    StartDateTime = appointmentDto.StartDateTime,
-                    EndDateTime = appointmentDto.EndDateTime,
-                    Title = appointmentDto.Title,
-                    Description = appointmentDto.Description
-                };
+                appointments.Add(appointment.Id, appointment);
+                return new ResultModel() { id = appointment.Id, message = "" };
+            }
 
-                Appointments.Add(appointment);
-                Appointments = Appointments.Where(appointment => appointment != null).OrderBy(appointment => appointment.StartDateTime).ToList();
-                return new ResultModel() { appointmentId = appointment.Id, ErrorMessage = "" };
-            }
-            else
-            {
-                return new ResultModel() { ErrorMessage = $"Meet already found between {result.StartDateTime.ToString("hh:mm:tt")} - {result.EndDateTime.ToString("hh:mm:tt")}" };
-            }
+            return new ResultModel() { message = $"Meeting already found between {result.StartDateTime.ToString("hh:mm tt")} and {result.EndDateTime.ToString("hh:mm tt")} on {result.StartDateTime.ToString("dd-MM-yyyy")}" };
         }
 
-        public List<Appointment> GetAppointmentAsync(string date)
+        public List<Appointment> GetAppointment(string date)
         {
             DateTime dateFormatted = DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            DateTime dateFormattedLimit = dateFormatted.AddDays(1);
 
-            return
-                (from appointment in Appointments
-                 where appointment.StartDateTime >= dateFormatted && appointment.StartDateTime < dateFormatted.AddDays(1)
-                 select appointment).ToList();
+            return (
+                from appointment in appointments
+                where appointment.Value.StartDateTime >= dateFormatted && appointment.Value.StartDateTime < dateFormattedLimit
+                select appointment.Value).ToList();
         }
 
-        public async Task<bool> DeleteAppointmentAsync(Guid Id)
+        public bool DeleteAppointment(Guid Id)
         {
-            var appoinment = Appointments.Where(appoinment => appoinment.Id == Id).SingleOrDefault();
-
-            if (appoinment is not null)
+            if (appointments.ContainsKey(Id))
             {
-                Appointments.Remove((Appointment)appoinment);
-                return await Task.FromResult(true);
-            }
-            return await Task.FromResult(false);
-        }
-
-        public bool DeleteAppointment(DateTime startDateTime)
-        {
-            var index = BinarySearchAppointments(startDateTime);
-
-            if (index != -1)
-            {
-                Appointments.RemoveAt(index);
-                return true;
+                if (appointments[Id].GroupId != Guid.Empty && appointments[Id].Routine == Routine.None)
+                {
+                    return DeleteRoutine(appointments[Id].GroupId);
+                }
+                return appointments.Remove(Id);
             }
             return false;
         }
 
-        public ResultModel UpdateAppointment(Guid Id, AppointmentDto appointmentDto)
+        public ResultModel UpdateAppointment(Guid Id, Appointment appointment)
         {
-            if (Appointments.Exists(appointment => appointment.Id == Id))
+            if (appointments.ContainsKey(Id))
             {
-                Appointment? result = ExistingAppointment(Id, appointmentDto);
-
+                appointment.GroupId = appointments[Id].GroupId;
+                Appointment? result = ExistingAppointment(appointment);
                 if (result is null)
                 {
-                    var UpdateAppointment = (from appointment in Appointments where appointment.Id == Id select appointment).FirstOrDefault() as Appointment;
-                    UpdateAppointment.StartDateTime = appointmentDto.StartDateTime;
-                    UpdateAppointment.EndDateTime = appointmentDto.EndDateTime;
-                    UpdateAppointment.Title = appointmentDto.Title;
-                    UpdateAppointment.Description = appointmentDto.Description;
+                    if (appointments[Id].GroupId != Guid.Empty)
+                    {
+                        DeleteAppointment(Id);
+                        return CreateSingleOrMultipleAppointments(appointment);
+                    }
 
-                    Appointments = Appointments.Where(appointment => appointment != null).OrderBy(appointment => appointment.StartDateTime).ToList();
-                    return new ResultModel() { appointmentId = Id, ErrorMessage = "" };
+                    appointment.Id = Id;
+                    appointments[Id] = appointment;
+                    return new ResultModel() { id = appointment.Id, message = "" };
                 }
-                else
-                {
-                    return new ResultModel() { appointmentId = result.Id, ErrorMessage = $"Cannot set, Meeting already found at between {result.StartDateTime.ToString("hh:mm:tt")} - {result.EndDateTime.ToString("hh:mm:tt")}" };
-                }
+                return new ResultModel() { id = result.Id, message = $"Cannot set, Meeting already found between {result.StartDateTime.ToString("hh:mm:tt")} - {result.EndDateTime.ToString("hh:mm:tt")} on {result.StartDateTime.ToString("dd-MM-yyyy")}" };
             }
-            else
+
+            return new ResultModel() { message = $"Meeting not found at Id: {Id}" };
+        }
+
+        public Appointment? ExistingAppointment(Appointment appointment)
+        {
+            var dateString = DateOnly.FromDateTime((DateTime)appointment.StartDateTime);
+            var stringDate = dateString.ToString("yyyy/MM/dd");
+
+            var appointmentsInDate = GetAppointment(stringDate);
+
+            if (appointment.GroupId == Guid.Empty)
             {
-                return new ResultModel(){
-                    appointmentId = Guid.Empty,
-                    ErrorMessage = $"Meeting not found at Id: {Id}"
-                };
+                return (from appointmentInList in appointmentsInDate
+                        where appointmentInList.Id != appointment.Id && (appointmentInList.StartDateTime < appointment.EndDateTime && appointmentInList.EndDateTime > appointment.StartDateTime)
+                        select appointmentInList).FirstOrDefault() as Appointment;
             }
-        }
 
-        public Appointment? ExistingAppointment(AppointmentDto appointmentDto)
+            return (from appointmentInList in appointmentsInDate
+                    where appointmentInList.GroupId != appointment.GroupId && (appointmentInList.StartDateTime < appointment.EndDateTime && appointmentInList.EndDateTime > appointment.StartDateTime)
+                    select appointmentInList).FirstOrDefault() as Appointment;
+        }
+        public List<RoutineDto> GetRoutines()
         {
-            var dateString = DateOnly.FromDateTime((DateTime)appointmentDto.StartDateTime);
-            var stringDate = dateString.ToString("yyyy/MM/dd");
+            var routines = (
+                from appointment in appointments
+                where appointments[appointment.Key].GroupId != Guid.Empty
+                select appointment.Value).ToList();
 
-            var AppointmentsInDate = GetAppointmentAsync(stringDate);
-            var filterAppointments =
-                (from appointment in AppointmentsInDate
-                 where appointment.StartDateTime < appointmentDto.EndDateTime && appointment.EndDateTime > appointmentDto.StartDateTime
-                 select appointment).FirstOrDefault() as Appointment;
-            return filterAppointments;
+            var query = routines.GroupBy(routine => routine.GroupId);
+            var routineList = new List<RoutineDto>();
+            foreach (var routineGroup in query)
+            {
+                var appointment = routineGroup.Select(x => x).First();
+                if (appointment.Routine != Routine.None)
+                {
+                    RoutineDto routine = new()
+                    {
+                        Title = appointment.Title,
+                        Id = appointment.GroupId,
+                        StartTime = appointment.StartDateTime.TimeOfDay,
+                        EndTime = appointment.EndDateTime.TimeOfDay
+                    };
+                    routineList.Add(routine);
+                }
+            }
+            return routineList;
         }
-        public Appointment? ExistingAppointment(Guid Id, AppointmentDto appointmentDto)
+        public bool DeleteRoutine(Guid id)
         {
-            var dateString = DateOnly.FromDateTime((DateTime)appointmentDto.StartDateTime);
-            var stringDate = dateString.ToString("yyyy/MM/dd");
-
-            var AppointmentsInDate = GetAppointmentAsync(stringDate);
-            var filterAppointments =
-                (from appointment in AppointmentsInDate
-                 where appointment.Id != Id && (appointment.StartDateTime < appointmentDto.EndDateTime && appointment.EndDateTime > appointmentDto.StartDateTime)
-                 select appointment).FirstOrDefault() as Appointment;
-            return filterAppointments;
+            var deleteCount = 0;
+            foreach (var appointment in appointments)
+            {
+                if (appointment.Value.GroupId == id)
+                {
+                    appointments.Remove(appointment.Key);
+                    deleteCount++;
+                }
+            }
+            return (deleteCount > 0);
         }
-
-        // public List<Appointment> FindAppointments(string? date)
-        // {
-        //     DateTime dateFormatted = DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-
-        //     return Appointments.FindAll(x => x.StartDateTime >= dateFormatted && x.StartDateTime < dateFormatted.AddDays(1));
-        // }
-
         public void TestList(Appointment appointment)
         {
-            Appointments.Add(appointment);
+            appointments.Add(appointment.Id, appointment);
         }
 
-        public int BinarySearchAppointments(DateTime startDateTime)
+        public Appointment GetById(Guid id)
         {
-            int start = 0, end = Appointments.Count() - 1;
+            return (appointments.ContainsKey(id)) ? appointments[id] : new Appointment() { Id = Guid.Empty };
+        }
 
-            while (start <= end)
+        public ResultModel CreateSingleOrMultipleAppointments(Appointment appointment)
+        {
+            var startDate = new DateOnly(appointment.StartDateTime.Year, appointment.StartDateTime.Month, appointment.StartDateTime.Day);
+            var endDate = new DateOnly(appointment.EndDateTime.Year, appointment.EndDateTime.Month, appointment.EndDateTime.Day);
+            var appointmentEndDateTime = appointment.EndDateTime;
+            var groupId = Guid.NewGuid();
+            var prevId = Guid.Empty;
+            var resultId = Guid.Empty;
+            var result = new ResultModel();
+            while (endDate.DayNumber - startDate.DayNumber > 0)
             {
-                int mid = (start + end) / 2;
-                var checkedValue = DateTime.Compare(startDateTime, Appointments[mid].StartDateTime);
-                if (checkedValue == 0)
+                var appointmentInUse = new Appointment()
                 {
-                    return mid;
+                    Id = Guid.NewGuid(),
+                    Title = appointment.Title,
+                    StartDateTime = appointment.StartDateTime,
+                    EndDateTime = appointment.EndDateTime,
+                    GroupId = appointment.GroupId,
+                    Routine = appointment.Routine
+                };
+
+                var date = startDate.AddDays(1);
+                appointmentInUse.EndDateTime = new DateTime(date.Year, date.Month, date.Day);
+                appointmentInUse.GroupId = appointment.GroupId = prevId = groupId;
+                result = CreateAppointment(appointmentInUse);
+                if (result.message != "")
+                {
+                    if (prevId != Guid.Empty)
+                    {
+                        DeleteRoutine(groupId);
+                    }
+                    return result;
                 }
-                else if (checkedValue < 0)
+                resultId = result.id;
+                appointment.StartDateTime = appointment.EndDateTime = appointmentInUse.EndDateTime;
+                startDate = new DateOnly(appointment.StartDateTime.Year, appointment.StartDateTime.Month, appointment.StartDateTime.Day);
+            }
+            appointment.EndDateTime = appointmentEndDateTime;
+            result = CreateAppointment(appointment);
+            if (result.message != "")
+            {
+                if (prevId != Guid.Empty)
                 {
-                    end = mid - 1;
-                }
-                else
-                {
-                    start = mid + 1;
+                    DeleteRoutine(groupId);
                 }
             }
-            return -1;
+            else if (prevId == Guid.Empty)
+            {
+                appointment.GroupId = Guid.Empty;
+            }
+            return result;
         }
     }
 }

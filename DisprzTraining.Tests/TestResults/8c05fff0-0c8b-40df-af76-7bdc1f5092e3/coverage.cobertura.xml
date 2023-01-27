@@ -1,0 +1,1254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<coverage line-rate="1" branch-rate="0.9891" version="1.9" timestamp="1674686949" lines-covered="327" lines-valid="327" branches-covered="91" branches-valid="92">
+  <sources>
+    <source>C:\Projects\DisprzTraining - Copy\DisprzTraining\</source>
+  </sources>
+  <packages>
+    <package name="DisprzTraining" line-rate="1" branch-rate="0.9891" complexity="119">
+      <classes>
+        <class name="Program" filename="Program.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="&lt;Main&gt;$" signature="(System.String[])" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="5" hits="1" branch="False" />
+                <line number="6" hits="1" branch="False" />
+                <line number="7" hits="1" branch="False" />
+                <line number="8" hits="1" branch="False" />
+                <line number="9" hits="1" branch="False" />
+                <line number="10" hits="1" branch="False" />
+                <line number="11" hits="1" branch="False" />
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="2" branch="False" />
+                <line number="17" hits="1" branch="False" />
+                <line number="19" hits="1" branch="False" />
+                <line number="20" hits="1" branch="False" />
+                <line number="22" hits="1" branch="False" />
+                <line number="24" hits="1" branch="False" />
+                <line number="27" hits="1" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="190" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="28" hits="1" branch="False" />
+                <line number="29" hits="1" branch="False" />
+                <line number="31" hits="1" branch="False" />
+                <line number="32" hits="1" branch="False" />
+                <line number="34" hits="1" branch="False" />
+                <line number="36" hits="1" branch="False" />
+                <line number="37" hits="2" branch="False" />
+                <line number="39" hits="1" branch="False" />
+                <line number="41" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="1" branch="False" />
+            <line number="6" hits="1" branch="False" />
+            <line number="7" hits="1" branch="False" />
+            <line number="8" hits="1" branch="False" />
+            <line number="9" hits="1" branch="False" />
+            <line number="10" hits="1" branch="False" />
+            <line number="11" hits="1" branch="False" />
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="2" branch="False" />
+            <line number="17" hits="1" branch="False" />
+            <line number="19" hits="1" branch="False" />
+            <line number="20" hits="1" branch="False" />
+            <line number="22" hits="1" branch="False" />
+            <line number="24" hits="1" branch="False" />
+            <line number="27" hits="1" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="190" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="28" hits="1" branch="False" />
+            <line number="29" hits="1" branch="False" />
+            <line number="31" hits="1" branch="False" />
+            <line number="32" hits="1" branch="False" />
+            <line number="34" hits="1" branch="False" />
+            <line number="36" hits="1" branch="False" />
+            <line number="37" hits="2" branch="False" />
+            <line number="39" hits="1" branch="False" />
+            <line number="41" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="Extension.Extension" filename="Utils\Extension.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="ToAppointment" signature="(DisprzTraining.Dto.AppointmentDto,System.Guid)" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="9" hits="148" branch="False" />
+                <line number="10" hits="286" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="28" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="11" hits="138" branch="False" />
+                <line number="12" hits="138" branch="False" />
+                <line number="14" hits="148" branch="False" />
+                <line number="15" hits="148" branch="False" />
+                <line number="16" hits="148" branch="False" />
+                <line number="17" hits="148" branch="False" />
+                <line number="18" hits="148" branch="False" />
+                <line number="19" hits="148" branch="False" />
+                <line number="20" hits="148" branch="False" />
+                <line number="21" hits="148" branch="False" />
+                <line number="22" hits="148" branch="False" />
+                <line number="23" hits="148" branch="False" />
+                <line number="24" hits="148" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="9" hits="148" branch="False" />
+            <line number="10" hits="286" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="28" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="11" hits="138" branch="False" />
+            <line number="12" hits="138" branch="False" />
+            <line number="14" hits="148" branch="False" />
+            <line number="15" hits="148" branch="False" />
+            <line number="16" hits="148" branch="False" />
+            <line number="17" hits="148" branch="False" />
+            <line number="18" hits="148" branch="False" />
+            <line number="19" hits="148" branch="False" />
+            <line number="20" hits="148" branch="False" />
+            <line number="21" hits="148" branch="False" />
+            <line number="22" hits="148" branch="False" />
+            <line number="23" hits="148" branch="False" />
+            <line number="24" hits="148" branch="False" />
+          </lines>
+        </class>
+        <class name="DisprzTraining.Utils.ConfigureDependenciesExtension" filename="Utils\ConfigureDependenciesExtension.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="ConfigureDependencyInjections" signature="(Microsoft.Extensions.DependencyInjection.IServiceCollection)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="1" branch="False" />
+                <line number="15" hits="1" branch="False" />
+                <line number="16" hits="1" branch="False" />
+                <line number="17" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="1" branch="False" />
+            <line number="15" hits="1" branch="False" />
+            <line number="16" hits="1" branch="False" />
+            <line number="17" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="DisprzTraining.Result.Error" filename="Models\ResultModel\Error.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_error" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="3" hits="106" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="3" hits="106" branch="False" />
+          </lines>
+        </class>
+        <class name="DisprzTraining.Result.GuidObject" filename="Models\ResultModel\GuidObject.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="3" hits="297" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="3" hits="297" branch="False" />
+          </lines>
+        </class>
+        <class name="DisprzTraining.Result.ResultModel" filename="Models\ResultModel\ResultModel.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_message" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="405" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="405" branch="False" />
+          </lines>
+        </class>
+        <class name="DisprzTraining.Models.Appointment" filename="Models\Appointment.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="732" branch="False" />
+              </lines>
+            </method>
+            <method name="get_GroupId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="759" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="9" hits="732" branch="False" />
+            <line number="10" hits="759" branch="False" />
+          </lines>
+        </class>
+        <class name="DisprzTraining.Dto.AppointmentDto" filename="Dtos\AppointmentDto.cs" line-rate="1" branch-rate="1" complexity="9">
+          <methods>
+            <method name="get_StartDateTime" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="3603" branch="False" />
+              </lines>
+            </method>
+            <method name="get_EndDateTime" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="1165" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Title" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="539" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Description" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="15" hits="447" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Routine" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="16" hits="539" branch="False" />
+              </lines>
+            </method>
+            <method name="IsValid" signature="(DisprzTraining.Result.ResultModel)" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="17" hits="58" branch="False" />
+                <line number="18" hits="70" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="50" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="19" hits="60" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="130" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="20" hits="104" branch="False" />
+                <line number="21" hits="58" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="10" hits="3603" branch="False" />
+            <line number="12" hits="1165" branch="False" />
+            <line number="14" hits="539" branch="False" />
+            <line number="15" hits="447" branch="False" />
+            <line number="16" hits="539" branch="False" />
+            <line number="17" hits="58" branch="False" />
+            <line number="18" hits="70" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="50" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="19" hits="60" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="130" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="20" hits="104" branch="False" />
+            <line number="21" hits="58" branch="False" />
+          </lines>
+        </class>
+        <class name="DisprzTraining.Dto.RoutineDto" filename="Dtos\RoutineDto.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="get_Title" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name="get_GroupId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name="get_StartTime" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="get_EndTime" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="5" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="6" branch="False" />
+            <line number="6" hits="6" branch="False" />
+            <line number="7" hits="5" branch="False" />
+            <line number="8" hits="5" branch="False" />
+          </lines>
+        </class>
+        <class name="DisprzTraining.DataAccess.AppointmentDAL" filename="DataAccess\AppointmentDAL.cs" line-rate="1" branch-rate="0.98" complexity="52">
+          <methods>
+            <method name="CreateAppointment" signature="(DisprzTraining.Models.Appointment)" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="13" hits="151" branch="False" />
+                <line number="14" hits="151" branch="False" />
+                <line number="15" hits="151" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="36" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="16" hits="138" branch="False" />
+                <line number="17" hits="138" branch="False" />
+                <line number="18" hits="138" branch="False" />
+                <line number="21" hits="13" branch="False" />
+                <line number="22" hits="151" branch="False" />
+              </lines>
+            </method>
+            <method name="GetAppointment" signature="(System.String)" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="25" hits="167" branch="False" />
+                <line number="26" hits="167" branch="False" />
+                <line number="27" hits="165" branch="False" />
+                <line number="29" hits="165" branch="False" />
+                <line number="30" hits="165" branch="False" />
+                <line number="31" hits="1229" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="35" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="32" hits="236" branch="False" />
+                <line number="33" hits="165" branch="False" />
+              </lines>
+            </method>
+            <method name="DeleteAppointment" signature="(System.Guid)" line-rate="1" branch-rate="1" complexity="6">
+              <lines>
+                <line number="36" hits="41" branch="False" />
+                <line number="37" hits="41" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="28" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="38" hits="38" branch="False" />
+                <line number="39" hits="38" branch="True" condition-coverage="100% (4/4)">
+                  <conditions>
+                    <condition number="81" type="jump" coverage="100%" />
+                    <condition number="121" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="40" hits="7" branch="False" />
+                <line number="41" hits="7" branch="False" />
+                <line number="43" hits="31" branch="False" />
+                <line number="45" hits="3" branch="False" />
+                <line number="46" hits="41" branch="False" />
+              </lines>
+            </method>
+            <method name="UpdateAppointment" signature="(System.Guid,DisprzTraining.Models.Appointment)" line-rate="1" branch-rate="1" complexity="8">
+              <lines>
+                <line number="49" hits="10" branch="False" />
+                <line number="50" hits="10" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="28" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="51" hits="8" branch="False" />
+                <line number="52" hits="8" branch="False" />
+                <line number="53" hits="8" branch="False" />
+                <line number="54" hits="8" branch="False" />
+                <line number="55" hits="8" branch="False" />
+                <line number="56" hits="8" branch="False" />
+                <line number="57" hits="8" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="250" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="58" hits="4" branch="False" />
+                <line number="59" hits="4" branch="True" condition-coverage="100% (4/4)">
+                  <conditions>
+                    <condition number="303" type="jump" coverage="100%" />
+                    <condition number="334" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="60" hits="1" branch="False" />
+                <line number="61" hits="1" branch="False" />
+                <line number="62" hits="1" branch="False" />
+                <line number="65" hits="3" branch="False" />
+                <line number="66" hits="3" branch="False" />
+                <line number="67" hits="3" branch="False" />
+                <line number="69" hits="4" branch="False" />
+                <line number="72" hits="2" branch="False" />
+                <line number="73" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="ExistingAppointment" signature="(DisprzTraining.Models.Appointment)" line-rate="1" branch-rate="0.9" complexity="10">
+              <lines>
+                <line number="76" hits="159" branch="False" />
+                <line number="77" hits="159" branch="False" />
+                <line number="78" hits="159" branch="False" />
+                <line number="80" hits="159" branch="False" />
+                <line number="82" hits="159" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="127" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="83" hits="134" branch="False" />
+                <line number="84" hits="134" branch="False" />
+                <line number="85" hits="56" branch="True" condition-coverage="100% (4/4)">
+                  <conditions>
+                    <condition number="32" type="jump" coverage="100%" />
+                    <condition number="66" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="86" hits="134" branch="False" />
+                <line number="89" hits="25" branch="False" />
+                <line number="90" hits="7" branch="True" condition-coverage="75% (3/4)">
+                  <conditions>
+                    <condition number="32" type="jump" coverage="100%" />
+                    <condition number="66" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="91" hits="25" branch="False" />
+                <line number="92" hits="159" branch="False" />
+              </lines>
+            </method>
+            <method name="GetRoutines" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="94" hits="5" branch="False" />
+                <line number="95" hits="5" branch="False" />
+                <line number="96" hits="5" branch="False" />
+                <line number="97" hits="36" branch="False" />
+                <line number="98" hits="40" branch="False" />
+                <line number="100" hits="40" branch="False" />
+                <line number="101" hits="5" branch="False" />
+                <line number="102" hits="21" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="503" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="103" hits="3" branch="False" />
+                <line number="104" hits="6" branch="False" />
+                <line number="105" hits="3" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="319" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="106" hits="3" branch="False" />
+                <line number="107" hits="3" branch="False" />
+                <line number="108" hits="3" branch="False" />
+                <line number="109" hits="3" branch="False" />
+                <line number="110" hits="3" branch="False" />
+                <line number="111" hits="3" branch="False" />
+                <line number="112" hits="3" branch="False" />
+                <line number="113" hits="3" branch="False" />
+                <line number="114" hits="3" branch="False" />
+                <line number="115" hits="3" branch="False" />
+                <line number="116" hits="3" branch="False" />
+                <line number="117" hits="5" branch="False" />
+                <line number="118" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="DeleteRoutine" signature="(System.Guid)" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="120" hits="30" branch="False" />
+                <line number="121" hits="30" branch="False" />
+                <line number="122" hits="618" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="243" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="123" hits="264" branch="False" />
+                <line number="124" hits="264" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="129" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="125" hits="128" branch="False" />
+                <line number="126" hits="128" branch="False" />
+                <line number="127" hits="128" branch="False" />
+                <line number="128" hits="128" branch="False" />
+                <line number="129" hits="264" branch="False" />
+                <line number="130" hits="30" branch="False" />
+                <line number="131" hits="30" branch="False" />
+              </lines>
+            </method>
+            <method name="TestList" signature="(DisprzTraining.Models.Appointment)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="133" hits="22" branch="False" />
+                <line number="134" hits="22" branch="False" />
+                <line number="135" hits="22" branch="False" />
+              </lines>
+            </method>
+            <method name="GetById" signature="(System.Guid)" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="138" hits="14" branch="False" />
+                <line number="139" hits="14" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="32" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="140" hits="14" branch="False" />
+              </lines>
+            </method>
+            <method name="CreateSingleOrMultipleAppointments" signature="(DisprzTraining.Models.Appointment)" line-rate="1" branch-rate="1" complexity="12">
+              <lines>
+                <line number="143" hits="26" branch="False" />
+                <line number="144" hits="26" branch="False" />
+                <line number="145" hits="26" branch="False" />
+                <line number="146" hits="26" branch="False" />
+                <line number="147" hits="26" branch="False" />
+                <line number="148" hits="26" branch="False" />
+                <line number="149" hits="26" branch="False" />
+                <line number="150" hits="26" branch="False" />
+                <line number="151" hits="38" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="791" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="152" hits="15" branch="False" />
+                <line number="153" hits="15" branch="False" />
+                <line number="154" hits="15" branch="False" />
+                <line number="155" hits="15" branch="False" />
+                <line number="156" hits="15" branch="False" />
+                <line number="157" hits="15" branch="False" />
+                <line number="158" hits="15" branch="False" />
+                <line number="159" hits="15" branch="False" />
+                <line number="160" hits="15" branch="False" />
+                <line number="161" hits="15" branch="False" />
+                <line number="163" hits="15" branch="False" />
+                <line number="164" hits="15" branch="False" />
+                <line number="165" hits="15" branch="False" />
+                <line number="166" hits="15" branch="False" />
+                <line number="167" hits="15" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="488" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="168" hits="3" branch="False" />
+                <line number="169" hits="3" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="540" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="170" hits="3" branch="False" />
+                <line number="171" hits="3" branch="False" />
+                <line number="172" hits="3" branch="False" />
+                <line number="173" hits="3" branch="False" />
+                <line number="175" hits="12" branch="False" />
+                <line number="176" hits="12" branch="False" />
+                <line number="177" hits="12" branch="False" />
+                <line number="178" hits="12" branch="False" />
+                <line number="179" hits="23" branch="False" />
+                <line number="180" hits="23" branch="False" />
+                <line number="181" hits="23" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="874" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="182" hits="6" branch="False" />
+                <line number="183" hits="6" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="926" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="184" hits="1" branch="False" />
+                <line number="185" hits="1" branch="False" />
+                <line number="186" hits="1" branch="False" />
+                <line number="187" hits="6" branch="False" />
+                <line number="188" hits="17" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="1037" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="189" hits="10" branch="False" />
+                <line number="190" hits="10" branch="False" />
+                <line number="191" hits="10" branch="False" />
+                <line number="192" hits="23" branch="False" />
+                <line number="193" hits="26" branch="False" />
+              </lines>
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="151" branch="False" />
+            <line number="14" hits="151" branch="False" />
+            <line number="15" hits="151" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="36" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="16" hits="138" branch="False" />
+            <line number="17" hits="138" branch="False" />
+            <line number="18" hits="138" branch="False" />
+            <line number="21" hits="13" branch="False" />
+            <line number="22" hits="151" branch="False" />
+            <line number="25" hits="167" branch="False" />
+            <line number="26" hits="167" branch="False" />
+            <line number="27" hits="165" branch="False" />
+            <line number="29" hits="165" branch="False" />
+            <line number="30" hits="165" branch="False" />
+            <line number="31" hits="1229" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="35" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="32" hits="236" branch="False" />
+            <line number="33" hits="165" branch="False" />
+            <line number="36" hits="41" branch="False" />
+            <line number="37" hits="41" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="28" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="38" hits="38" branch="False" />
+            <line number="39" hits="38" branch="True" condition-coverage="100% (4/4)">
+              <conditions>
+                <condition number="81" type="jump" coverage="100%" />
+                <condition number="121" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="40" hits="7" branch="False" />
+            <line number="41" hits="7" branch="False" />
+            <line number="43" hits="31" branch="False" />
+            <line number="45" hits="3" branch="False" />
+            <line number="46" hits="41" branch="False" />
+            <line number="49" hits="10" branch="False" />
+            <line number="50" hits="10" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="28" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="51" hits="8" branch="False" />
+            <line number="52" hits="8" branch="False" />
+            <line number="53" hits="8" branch="False" />
+            <line number="54" hits="8" branch="False" />
+            <line number="55" hits="8" branch="False" />
+            <line number="56" hits="8" branch="False" />
+            <line number="57" hits="8" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="250" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="58" hits="4" branch="False" />
+            <line number="59" hits="4" branch="True" condition-coverage="100% (4/4)">
+              <conditions>
+                <condition number="303" type="jump" coverage="100%" />
+                <condition number="334" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="60" hits="1" branch="False" />
+            <line number="61" hits="1" branch="False" />
+            <line number="62" hits="1" branch="False" />
+            <line number="65" hits="3" branch="False" />
+            <line number="66" hits="3" branch="False" />
+            <line number="67" hits="3" branch="False" />
+            <line number="69" hits="4" branch="False" />
+            <line number="72" hits="2" branch="False" />
+            <line number="73" hits="10" branch="False" />
+            <line number="76" hits="159" branch="False" />
+            <line number="77" hits="159" branch="False" />
+            <line number="78" hits="159" branch="False" />
+            <line number="80" hits="159" branch="False" />
+            <line number="82" hits="159" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="127" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="83" hits="134" branch="False" />
+            <line number="84" hits="134" branch="False" />
+            <line number="85" hits="56" branch="True" condition-coverage="100% (4/4)">
+              <conditions>
+                <condition number="32" type="jump" coverage="100%" />
+                <condition number="66" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="86" hits="134" branch="False" />
+            <line number="89" hits="25" branch="False" />
+            <line number="90" hits="7" branch="True" condition-coverage="75% (3/4)">
+              <conditions>
+                <condition number="32" type="jump" coverage="100%" />
+                <condition number="66" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="91" hits="25" branch="False" />
+            <line number="92" hits="159" branch="False" />
+            <line number="94" hits="5" branch="False" />
+            <line number="95" hits="5" branch="False" />
+            <line number="96" hits="5" branch="False" />
+            <line number="97" hits="36" branch="False" />
+            <line number="98" hits="40" branch="False" />
+            <line number="100" hits="40" branch="False" />
+            <line number="101" hits="5" branch="False" />
+            <line number="102" hits="21" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="503" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="103" hits="3" branch="False" />
+            <line number="104" hits="6" branch="False" />
+            <line number="105" hits="3" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="319" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="106" hits="3" branch="False" />
+            <line number="107" hits="3" branch="False" />
+            <line number="108" hits="3" branch="False" />
+            <line number="109" hits="3" branch="False" />
+            <line number="110" hits="3" branch="False" />
+            <line number="111" hits="3" branch="False" />
+            <line number="112" hits="3" branch="False" />
+            <line number="113" hits="3" branch="False" />
+            <line number="114" hits="3" branch="False" />
+            <line number="115" hits="3" branch="False" />
+            <line number="116" hits="3" branch="False" />
+            <line number="117" hits="5" branch="False" />
+            <line number="118" hits="5" branch="False" />
+            <line number="120" hits="30" branch="False" />
+            <line number="121" hits="30" branch="False" />
+            <line number="122" hits="618" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="243" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="123" hits="264" branch="False" />
+            <line number="124" hits="264" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="129" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="125" hits="128" branch="False" />
+            <line number="126" hits="128" branch="False" />
+            <line number="127" hits="128" branch="False" />
+            <line number="128" hits="128" branch="False" />
+            <line number="129" hits="264" branch="False" />
+            <line number="130" hits="30" branch="False" />
+            <line number="131" hits="30" branch="False" />
+            <line number="133" hits="22" branch="False" />
+            <line number="134" hits="22" branch="False" />
+            <line number="135" hits="22" branch="False" />
+            <line number="138" hits="14" branch="False" />
+            <line number="139" hits="14" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="32" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="140" hits="14" branch="False" />
+            <line number="143" hits="26" branch="False" />
+            <line number="144" hits="26" branch="False" />
+            <line number="145" hits="26" branch="False" />
+            <line number="146" hits="26" branch="False" />
+            <line number="147" hits="26" branch="False" />
+            <line number="148" hits="26" branch="False" />
+            <line number="149" hits="26" branch="False" />
+            <line number="150" hits="26" branch="False" />
+            <line number="151" hits="38" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="791" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="152" hits="15" branch="False" />
+            <line number="153" hits="15" branch="False" />
+            <line number="154" hits="15" branch="False" />
+            <line number="155" hits="15" branch="False" />
+            <line number="156" hits="15" branch="False" />
+            <line number="157" hits="15" branch="False" />
+            <line number="158" hits="15" branch="False" />
+            <line number="159" hits="15" branch="False" />
+            <line number="160" hits="15" branch="False" />
+            <line number="161" hits="15" branch="False" />
+            <line number="163" hits="15" branch="False" />
+            <line number="164" hits="15" branch="False" />
+            <line number="165" hits="15" branch="False" />
+            <line number="166" hits="15" branch="False" />
+            <line number="167" hits="15" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="488" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="168" hits="3" branch="False" />
+            <line number="169" hits="3" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="540" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="170" hits="3" branch="False" />
+            <line number="171" hits="3" branch="False" />
+            <line number="172" hits="3" branch="False" />
+            <line number="173" hits="3" branch="False" />
+            <line number="175" hits="12" branch="False" />
+            <line number="176" hits="12" branch="False" />
+            <line number="177" hits="12" branch="False" />
+            <line number="178" hits="12" branch="False" />
+            <line number="179" hits="23" branch="False" />
+            <line number="180" hits="23" branch="False" />
+            <line number="181" hits="23" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="874" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="182" hits="6" branch="False" />
+            <line number="183" hits="6" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="926" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="184" hits="1" branch="False" />
+            <line number="185" hits="1" branch="False" />
+            <line number="186" hits="1" branch="False" />
+            <line number="187" hits="6" branch="False" />
+            <line number="188" hits="17" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="1037" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="189" hits="10" branch="False" />
+            <line number="190" hits="10" branch="False" />
+            <line number="191" hits="10" branch="False" />
+            <line number="192" hits="23" branch="False" />
+            <line number="193" hits="26" branch="False" />
+            <line number="10" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="DisprzTraining.Controllers.AppointmentsController" filename="Controllers\AppointmentsController.cs" line-rate="1" branch-rate="1" complexity="19">
+          <methods>
+            <method name="Create" signature="(DisprzTraining.Dto.AppointmentDto)" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="26" hits="45" branch="False" />
+                <line number="27" hits="45" branch="False" />
+                <line number="28" hits="45" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="46" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="29" hits="42" branch="False" />
+                <line number="30" hits="42" branch="False" />
+                <line number="31" hits="42" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="121" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="34" hits="3" branch="False" />
+                <line number="35" hits="3" branch="False" />
+                <line number="37" hits="45" branch="False" />
+              </lines>
+            </method>
+            <method name="Get" signature="(System.String)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="43" hits="7" branch="False" />
+                <line number="44" hits="7" branch="False" />
+                <line number="45" hits="7" branch="False" />
+                <line number="46" hits="5" branch="False" />
+                <line number="48" hits="4" branch="False" />
+                <line number="49" hits="2" branch="False" />
+                <line number="51" hits="7" branch="False" />
+              </lines>
+            </method>
+            <method name="Delete" signature="(System.Guid)" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="57" hits="10" branch="False" />
+                <line number="58" hits="10" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="33" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="59" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="Update" signature="(System.Guid,DisprzTraining.Dto.AppointmentDto)" line-rate="1" branch-rate="1" complexity="6">
+              <lines>
+                <line number="66" hits="13" branch="False" />
+                <line number="67" hits="13" branch="False" />
+                <line number="68" hits="13" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="46" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="69" hits="10" branch="False" />
+                <line number="70" hits="10" branch="False" />
+                <line number="71" hits="18" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="124" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="72" hits="8" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="173" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="74" hits="2" branch="False" />
+                <line number="75" hits="2" branch="False" />
+                <line number="79" hits="3" branch="False" />
+                <line number="80" hits="3" branch="False" />
+                <line number="82" hits="13" branch="False" />
+              </lines>
+            </method>
+            <method name="GetRoutine" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="87" hits="5" branch="False" />
+                <line number="88" hits="5" branch="False" />
+                <line number="89" hits="5" branch="False" />
+                <line number="90" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="DeleteRoutine" signature="(System.Guid)" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="97" hits="6" branch="False" />
+                <line number="98" hits="6" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="33" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="99" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name="GetById" signature="(System.Guid)" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="104" hits="6" branch="False" />
+                <line number="105" hits="6" branch="False" />
+                <line number="106" hits="6" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="60" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="107" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(DisprzTraining.Business.IAppointmentBL)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="16" hits="61" branch="False" />
+                <line number="17" hits="61" branch="False" />
+                <line number="18" hits="61" branch="False" />
+                <line number="19" hits="61" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="26" hits="45" branch="False" />
+            <line number="27" hits="45" branch="False" />
+            <line number="28" hits="45" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="46" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="29" hits="42" branch="False" />
+            <line number="30" hits="42" branch="False" />
+            <line number="31" hits="42" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="121" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="34" hits="3" branch="False" />
+            <line number="35" hits="3" branch="False" />
+            <line number="37" hits="45" branch="False" />
+            <line number="43" hits="7" branch="False" />
+            <line number="44" hits="7" branch="False" />
+            <line number="45" hits="7" branch="False" />
+            <line number="46" hits="5" branch="False" />
+            <line number="48" hits="4" branch="False" />
+            <line number="49" hits="2" branch="False" />
+            <line number="51" hits="7" branch="False" />
+            <line number="57" hits="10" branch="False" />
+            <line number="58" hits="10" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="33" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="59" hits="10" branch="False" />
+            <line number="66" hits="13" branch="False" />
+            <line number="67" hits="13" branch="False" />
+            <line number="68" hits="13" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="46" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="69" hits="10" branch="False" />
+            <line number="70" hits="10" branch="False" />
+            <line number="71" hits="18" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="124" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="72" hits="8" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="173" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="74" hits="2" branch="False" />
+            <line number="75" hits="2" branch="False" />
+            <line number="79" hits="3" branch="False" />
+            <line number="80" hits="3" branch="False" />
+            <line number="82" hits="13" branch="False" />
+            <line number="87" hits="5" branch="False" />
+            <line number="88" hits="5" branch="False" />
+            <line number="89" hits="5" branch="False" />
+            <line number="90" hits="5" branch="False" />
+            <line number="97" hits="6" branch="False" />
+            <line number="98" hits="6" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="33" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="99" hits="6" branch="False" />
+            <line number="104" hits="6" branch="False" />
+            <line number="105" hits="6" branch="False" />
+            <line number="106" hits="6" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="60" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="107" hits="6" branch="False" />
+            <line number="16" hits="61" branch="False" />
+            <line number="17" hits="61" branch="False" />
+            <line number="18" hits="61" branch="False" />
+            <line number="19" hits="61" branch="False" />
+          </lines>
+        </class>
+        <class name="DisprzTraining.Business.AppointmentBL" filename="Business\AppointmentBL.cs" line-rate="1" branch-rate="1" complexity="25">
+          <methods>
+            <method name="Create" signature="(DisprzTraining.Dto.AppointmentDto)" line-rate="1" branch-rate="1" complexity="8">
+              <lines>
+                <line number="19" hits="42" branch="False" />
+                <line number="20" hits="42" branch="True" condition-coverage="100% (4/4)">
+                  <conditions>
+                    <condition number="36" type="jump" coverage="100%" />
+                    <condition number="53" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="23" hits="11" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="105" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="24" hits="1" branch="False" />
+                <line number="25" hits="1" branch="False" />
+                <line number="26" hits="1" branch="False" />
+                <line number="27" hits="1" branch="False" />
+                <line number="28" hits="10" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="268" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="29" hits="1" branch="False" />
+                <line number="30" hits="1" branch="False" />
+                <line number="31" hits="1" branch="False" />
+                <line number="32" hits="1" branch="False" />
+                <line number="33" hits="11" branch="False" />
+                <line number="34" hits="11" branch="False" />
+                <line number="36" hits="6" branch="False" />
+                <line number="37" hits="6" branch="False" />
+                <line number="38" hits="6" branch="False" />
+                <line number="39" hits="25" branch="False" />
+                <line number="40" hits="25" branch="False" />
+                <line number="41" hits="25" branch="False" />
+                <line number="42" hits="42" branch="False" />
+              </lines>
+            </method>
+            <method name="Get" signature="(System.String)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="45" hits="7" branch="False" />
+                <line number="46" hits="7" branch="False" />
+                <line number="47" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="Delete" signature="(System.Guid)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="50" hits="10" branch="False" />
+                <line number="51" hits="10" branch="False" />
+                <line number="52" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="Update" signature="(System.Guid,DisprzTraining.Dto.AppointmentDto)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="55" hits="10" branch="False" />
+                <line number="56" hits="10" branch="False" />
+                <line number="57" hits="10" branch="False" />
+                <line number="58" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="DeleteRoutine" signature="(System.Guid)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="60" hits="9" branch="False" />
+                <line number="61" hits="9" branch="False" />
+                <line number="62" hits="9" branch="False" />
+              </lines>
+            </method>
+            <method name="CreateRoutine" signature="(DisprzTraining.Dto.AppointmentDto,System.DateTime)" line-rate="1" branch-rate="1" complexity="10">
+              <lines>
+                <line number="64" hits="17" branch="False" />
+                <line number="65" hits="17" branch="False" />
+                <line number="66" hits="17" branch="False" />
+                <line number="67" hits="150" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="554" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="68" hits="137" branch="False" />
+                <line number="69" hits="137" branch="True" condition-coverage="100% (4/4)">
+                  <conditions>
+                    <condition number="94" type="jump" coverage="100%" />
+                    <condition number="138" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="70" hits="113" branch="False" />
+                <line number="71" hits="113" branch="False" />
+                <line number="72" hits="113" branch="False" />
+                <line number="74" hits="113" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="243" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="75" hits="4" branch="False" />
+                <line number="76" hits="4" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="294" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="77" hits="3" branch="False" />
+                <line number="78" hits="3" branch="False" />
+                <line number="79" hits="3" branch="False" />
+                <line number="80" hits="4" branch="False" />
+                <line number="82" hits="109" branch="False" />
+                <line number="83" hits="109" branch="False" />
+                <line number="84" hits="109" branch="False" />
+                <line number="85" hits="133" branch="False" />
+                <line number="86" hits="133" branch="False" />
+                <line number="87" hits="133" branch="False" />
+                <line number="88" hits="13" branch="False" />
+                <line number="89" hits="17" branch="False" />
+              </lines>
+            </method>
+            <method name="GetRoutines" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="92" hits="5" branch="False" />
+                <line number="93" hits="5" branch="False" />
+                <line number="94" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="GetById" signature="(System.Guid)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="97" hits="6" branch="False" />
+                <line number="98" hits="6" branch="False" />
+                <line number="99" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(DisprzTraining.DataAccess.IAppointmentDAL)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="32" branch="False" />
+                <line number="14" hits="32" branch="False" />
+                <line number="15" hits="32" branch="False" />
+                <line number="16" hits="32" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="42" branch="False" />
+            <line number="20" hits="42" branch="True" condition-coverage="100% (4/4)">
+              <conditions>
+                <condition number="36" type="jump" coverage="100%" />
+                <condition number="53" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="23" hits="11" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="105" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="24" hits="1" branch="False" />
+            <line number="25" hits="1" branch="False" />
+            <line number="26" hits="1" branch="False" />
+            <line number="27" hits="1" branch="False" />
+            <line number="28" hits="10" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="268" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="29" hits="1" branch="False" />
+            <line number="30" hits="1" branch="False" />
+            <line number="31" hits="1" branch="False" />
+            <line number="32" hits="1" branch="False" />
+            <line number="33" hits="11" branch="False" />
+            <line number="34" hits="11" branch="False" />
+            <line number="36" hits="6" branch="False" />
+            <line number="37" hits="6" branch="False" />
+            <line number="38" hits="6" branch="False" />
+            <line number="39" hits="25" branch="False" />
+            <line number="40" hits="25" branch="False" />
+            <line number="41" hits="25" branch="False" />
+            <line number="42" hits="42" branch="False" />
+            <line number="45" hits="7" branch="False" />
+            <line number="46" hits="7" branch="False" />
+            <line number="47" hits="5" branch="False" />
+            <line number="50" hits="10" branch="False" />
+            <line number="51" hits="10" branch="False" />
+            <line number="52" hits="10" branch="False" />
+            <line number="55" hits="10" branch="False" />
+            <line number="56" hits="10" branch="False" />
+            <line number="57" hits="10" branch="False" />
+            <line number="58" hits="10" branch="False" />
+            <line number="60" hits="9" branch="False" />
+            <line number="61" hits="9" branch="False" />
+            <line number="62" hits="9" branch="False" />
+            <line number="64" hits="17" branch="False" />
+            <line number="65" hits="17" branch="False" />
+            <line number="66" hits="17" branch="False" />
+            <line number="67" hits="150" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="554" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="68" hits="137" branch="False" />
+            <line number="69" hits="137" branch="True" condition-coverage="100% (4/4)">
+              <conditions>
+                <condition number="94" type="jump" coverage="100%" />
+                <condition number="138" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="70" hits="113" branch="False" />
+            <line number="71" hits="113" branch="False" />
+            <line number="72" hits="113" branch="False" />
+            <line number="74" hits="113" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="243" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="75" hits="4" branch="False" />
+            <line number="76" hits="4" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="294" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="77" hits="3" branch="False" />
+            <line number="78" hits="3" branch="False" />
+            <line number="79" hits="3" branch="False" />
+            <line number="80" hits="4" branch="False" />
+            <line number="82" hits="109" branch="False" />
+            <line number="83" hits="109" branch="False" />
+            <line number="84" hits="109" branch="False" />
+            <line number="85" hits="133" branch="False" />
+            <line number="86" hits="133" branch="False" />
+            <line number="87" hits="133" branch="False" />
+            <line number="88" hits="13" branch="False" />
+            <line number="89" hits="17" branch="False" />
+            <line number="92" hits="5" branch="False" />
+            <line number="93" hits="5" branch="False" />
+            <line number="94" hits="5" branch="False" />
+            <line number="97" hits="6" branch="False" />
+            <line number="98" hits="6" branch="False" />
+            <line number="99" hits="6" branch="False" />
+            <line number="13" hits="32" branch="False" />
+            <line number="14" hits="32" branch="False" />
+            <line number="15" hits="32" branch="False" />
+            <line number="16" hits="32" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>
