@@ -2,9 +2,9 @@
 <CoverageSession>
   <Summary numSequencePoints="357" visitedSequencePoints="0" numBranchPoints="94" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="120" minCyclomaticComplexity="120" visitedClasses="0" numClasses="12" visitedMethods="0" numMethods="46" />
   <Modules>
-    <Module hash="3FE5E919-FF58-4563-8D17-5C0EDAC679E0">
+    <Module hash="9C04F6D7-2B90-4C1C-AFCD-4D330FF31EEA">
       <ModulePath>DisprzTraining.dll</ModulePath>
-      <ModuleTime>2023-01-27T04:16:58</ModuleTime>
+      <ModuleTime>2023-01-27T06:22:33</ModuleTime>
       <ModuleName>DisprzTraining</ModuleName>
       <Files>
         <File uid="1" fullPath="c:\Projects\DisprzTraining - Copy\DisprzTraining\Program.cs" />
