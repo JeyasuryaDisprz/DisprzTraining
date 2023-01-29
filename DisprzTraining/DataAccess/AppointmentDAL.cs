@@ -116,13 +116,14 @@ namespace DisprzTraining.DataAccess
         public bool DeleteRoutine(Guid id)
         {
             var deleteCount = 0;
-            foreach (var appointment in appointments)
+            var appointmentsByGroupId = (from appointmentInDictionary in appointments
+                                         where appointmentInDictionary.Value.GroupId == id
+                                         select appointmentInDictionary.Value);
+
+            foreach (var appointment in appointmentsByGroupId)
             {
-                if (appointment.Value.GroupId == id)
-                {
-                    appointments.Remove(appointment.Key);
-                    deleteCount++;
-                }
+                appointments.Remove(appointment.Id);
+                deleteCount++;
             }
             return (deleteCount > 0);
         }
