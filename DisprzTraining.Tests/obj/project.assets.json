@@ -12478,11 +12478,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\DisprzTraining - Copy\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
+      "projectUniqueName": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
       "projectName": "DisprzTraining.Tests",
-      "projectPath": "C:\\Projects\\DisprzTraining - Copy\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
+      "projectPath": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining.Tests\\DisprzTraining.Tests.csproj",
       "packagesPath": "C:\\Users\\jeyasurya.r_disprz\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\DisprzTraining - Copy\\DisprzTraining.Tests\\obj\\",
+      "outputPath": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jeyasurya.r_disprz\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -12497,8 +12497,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj": {
-              "projectPath": "C:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj"
+            "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj": {
+              "projectPath": "c:\\Projects\\DisprzTraining - Copy\\DisprzTraining\\DisprzTraining.csproj"
             }
           }
         }
